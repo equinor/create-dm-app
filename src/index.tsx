@@ -1,19 +1,52 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import {UiPluginProvider} from '@development-framework/dm-core'
+import plugins from './plugins'
+import {AuthProvider} from 'react-oauth2-code-pkce'
+import {BrowserRouter as Router} from 'react-router-dom'
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const fullCurrentURL = () =>
+    `${window.location.pathname}${window.location.search}${window.location.hash}`
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+const authEnabled = process.env.REACT_APP_AUTH === '1'
+const authConfig = {
+    clientId: process.env.REACT_APP_AUTH_CLIENT_ID || '',
+    authorizationEndpoint: process.env.REACT_APP_AUTH_ENDPOINT || '',
+    tokenEndpoint: process.env.REACT_APP_TOKEN_ENDPOINT || '',
+    scope: process.env.REACT_APP_AUTH_SCOPE || '',
+    redirectUri: process.env.REACT_APP_AUTH_REDIRECT_URI || '',
+    logoutEndpoint: process.env.REACT_APP_LOGOUT_ENDPOINT || '',
+    preLogin: () => localStorage.setItem('preLoginPath', fullCurrentURL()),
+    postLogin: () => {
+        if (localStorage.getItem('preLoginPath') !== fullCurrentURL()) {
+            // @ts-ignore
+            window.location.href = localStorage.getItem('preLoginPath')
+        }
+    },
+}
+
+
+const Test = () => {
+    return (
+
+        <UiPluginProvider pluginsToLoad={plugins}>
+            {authEnabled ? (
+                <AuthProvider authConfig={authConfig}>
+                    <App/>
+                </AuthProvider>
+            ) : (
+                <App/>
+            )}
+        </UiPluginProvider>
+    )
+}
+
+ReactDOM.render(
+    <Router>
+        <Test/>
+    </Router>
+    ,
+    document.getElementById('root')
+);
