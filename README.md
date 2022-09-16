@@ -39,7 +39,9 @@ You will see the build errors and lint warnings in the console.
 
 Create-dm-app is using [create-react-app](https://create-react-app.dev/) so go to [create-react-app](https://github.com/facebook/create-react-app) to get a list of all possible commands, or just look inside the package.json file and under scripts.
 
-## Development
+## Development tips
 
-Update `@development-framework/dm-core` inside `package.json` to `link:./../data-modelling-tool/web/packages/dmt-core/`. 
+### Link core
+
+If you want to work on the core and don't want to release new core versions to see the changes in create-dm-app, then change the  `@development-framework/dm-core` from inside `package.json` to point to core locally like `link:./../data-modelling-tool/web/packages/dmt-core/`. You have to run `yarn rollup`inside dm-core to get changes, since this will bild a new dist that will be picked-up by create-dm-app. 
 
