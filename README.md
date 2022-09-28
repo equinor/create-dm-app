@@ -5,7 +5,7 @@ Create new data modelling apps with just one command!
 ## Quick Overview
 
 ```
-npx create-dm-app my-app
+npx @development-framework/create-dm-app my-app
 cd my-app
 npm start
 ```
