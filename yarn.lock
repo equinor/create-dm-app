@@ -1232,21 +1232,22 @@
   resolved "https://registry.npmjs.org/@ctrl/tinycolor/-/tinycolor-3.4.1.tgz"
   integrity sha512-ej5oVy6lykXsvieQtqZxCOaLT+xD4+QNarq78cIYISHmZXshCvROLudpQN3lfL8G0NL7plMSSK+zlyvCaIJ4Iw==
 
-"@development-framework/dm-core@1.0.4":
-  version "1.0.4"
-  resolved "https://registry.npmjs.org/@development-framework/dm-core/-/dm-core-1.0.4.tgz"
-  integrity sha512-rXjLXgPAUC95Usjihf+/aqgXxqn5sSjznwGA0LPMBGYI8sec7ClLQvqimhxoPP1YWA5SaCfLYQFZyV8t41l40w==
+"@development-framework/dm-core@1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@development-framework/dm-core/-/dm-core-1.0.5.tgz#0a2c2d054f71da816e5dd35f5e274fac3780bdd5"
+  integrity sha512-2OVNnszcBVm/a+chu6EYOi0vv0+6USTBwaFR67kFoBXP5VW834mpUxahak9p3ufF5POcQzMSpZLwvklkzthtkw==
   dependencies:
     "@equinor/eds-core-react" "^0.20.0"
     "@equinor/eds-icons" "^0.12.0"
     "@equinor/eds-tokens" "^0.7.0"
     axios "^0.27.2"
     lodash "^4.17.19"
+    react "^17.0.2"
+    react-dom "^17.0.2"
     react-icons "3.11.0"
     react-is "^17.0.2"
     react-notifications "^1.7.4"
     react-oauth2-code-pkce "^1.6.1"
-    react-router-dom "^5.1.2"
     styled-components "^5.2.3"
 
 "@emotion/is-prop-valid@^0.8.8":
@@ -1256,22 +1257,10 @@
   dependencies:
     "@emotion/memoize" "0.7.4"
 
-"@emotion/is-prop-valid@^1.1.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@emotion/is-prop-valid/-/is-prop-valid-1.2.0.tgz#7f2d35c97891669f7e276eb71c83376a5dc44c83"
-  integrity sha512-3aDpDprjM0AwaxGE09bOPkNxHpBd+kA6jty3RnaEXdweX1DF1U3VQpPYb0g1IStAuK7SVQ1cy+bNBBKp4W3Fjg==
-  dependencies:
-    "@emotion/memoize" "^0.8.0"
-
 "@emotion/memoize@0.7.4":
   version "0.7.4"
   resolved "https://registry.npmjs.org/@emotion/memoize/-/memoize-0.7.4.tgz"
   integrity sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==
-
-"@emotion/memoize@^0.8.0":
-  version "0.8.0"
-  resolved "https://registry.yarnpkg.com/@emotion/memoize/-/memoize-0.8.0.tgz#f580f9beb67176fa57aae70b08ed510e1b18980f"
-  integrity sha512-G/YwXTkv7Den9mXDO7AhLWkE3q+I92B+VqAE+dYG4NGPaHZGvt3G8Q0p9vmE+sq7rTGphUbAvmQ9YpbfMQGGlA==
 
 "@emotion/stylis@^0.8.4":
   version "0.8.5"
@@ -8439,7 +8428,7 @@ react-refresh@^0.11.0:
   resolved "https://registry.npmjs.org/react-refresh/-/react-refresh-0.11.0.tgz"
   integrity sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==
 
-react-router-dom@5.3.3, react-router-dom@^5.1.2:
+react-router-dom@5.3.3:
   version "5.3.3"
   resolved "https://registry.npmjs.org/react-router-dom/-/react-router-dom-5.3.3.tgz"
   integrity sha512-Ov0tGPMBgqmbu5CDmN++tv2HQ9HlWDuWIIqn4b88gjlAN5IHI+4ZUZRcpz9Hl0azFIwihbLDYw1OiHGRo7ZIng==
