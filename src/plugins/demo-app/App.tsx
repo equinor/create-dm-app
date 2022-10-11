@@ -1,22 +1,21 @@
 // @ts-nocheck
 
-import React from 'react'
+import React, { useContext } from 'react'
 import { Route } from 'react-router-dom'
 import { Layout } from 'antd'
 import Routes from './Routes'
-import { TApp, TLayout } from '@development-framework/dm-core'
+import { ApplicationContext, TApp, TLayout } from '@development-framework/dm-core'
 import Content from './layout/Content'
 import Menu from './layout/Menu'
-import {Header} from "./layout/Header";
+import { Header } from "./layout/Header";
 
 const MainLayout = (props: TLayout) => {
-  const { content, settings, allApps } = props
+  const { content, settings } = props
   return (
     <>
       <Header
-        appName={settings.label}
+        appName={settings.label ?? settings.name}
         urlPath={settings.urlPath}
-        allApps={allApps}
       />
       <Layout>
         <Menu appRootPath={settings.urlPath} />
@@ -26,19 +25,19 @@ const MainLayout = (props: TLayout) => {
   )
 }
 
-export default (props: TApp): JSX.Element => {
-  const { settings, applications } = props
+const App = (props: TApp): JSX.Element => {
+  const settings = useContext(ApplicationContext)
+  const urlPath = settings.urlPath ? `/${settings.urlPath}` : ''
 
   return (
     <>
       {Routes.map((route) => (
         <Route
           exact
-          path={`/${settings.urlPath}${route.path}`}
+          path={`${urlPath}/${route.path}`}
           key={route.path}
           render={() => (
             <MainLayout
-              allApps={applications}
               content={route.content}
               settings={settings}
             />
@@ -48,3 +47,5 @@ export default (props: TApp): JSX.Element => {
     </>
   )
 }
+
+export default App

@@ -11,7 +11,7 @@ const PageContent = styled.div`
   padding: 20px;
 `
 
-export default (props: TContent): JSX.Element => {
+const ContentWrapper = (props: TContent): JSX.Element => {
   const { content, settings } = props
   const { data_source, entity_id } = useParams<{
     data_source: string
@@ -28,3 +28,5 @@ export default (props: TContent): JSX.Element => {
     </Content>
   )
 }
+
+export default ContentWrapper

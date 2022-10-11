@@ -13,9 +13,7 @@ import {
     APP_ROLES,
     DMSS_ADMIN_ROLE,
     DmssAPI,
-    sortApplications,
-    TDmtSettings,
-    Dialog
+    Dialog,
 } from "@development-framework/dm-core";
 import useLocalStorage from "react-oauth2-code-pkce/dist/Hooks";
 
@@ -35,38 +33,6 @@ const Icons = styled.div`
   }
 `
 
-const AppSelectorWrapper = styled.div`
-  position: absolute;
-  top: 60px;
-  left: 0;
-  min-width: 300px;
-  max-width: 300px;
-  background: #ffffff;
-  border: 1px solid gray;
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  padding: 10px;
-  width: min-content;
-`
-
-const AppBox = styled.div`
-  border: 3px solid grey;
-  padding: 8px;
-  margin: 5px;
-  height: 80px;
-  width: 80px;
-  background: #b3dae0;
-  color: black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-
-  &:hover {
-    background: #4f878d;
-  }
-`
 export const ClickableIcon = styled.div`
   &:hover {
     color: gray;
@@ -101,14 +67,12 @@ const StyledLink = styled(Link)`
 export const Header = (props: {
     appName: string
     urlPath: string
-    allApps: TDmtSettings[]
 }): JSX.Element => {
-    const {appName, urlPath, allApps} = props
+    const {appName, urlPath} = props
     const [version, setVersion] = useState<string>('Version not loaded')
     const {tokenData, token, logOut} = useContext(AuthContext)
     const [aboutOpen, setAboutOpen] = useState(false)
     const [visibleUserInfo, setVisibleUserInfo] = useState<boolean>(false)
-    const [appSelectorOpen, setAppSelectorOpen] = useState<boolean>(false)
     const [apiKey, setAPIKey] = useState<string | null>(null)
     const dmssApi = new DmssAPI(token)
     const [checked, updateChecked] = useLocalStorage<string | null>(
@@ -126,9 +90,6 @@ export const Header = (props: {
     return (
         <TopBar>
             <TopBar.Header>
-                <ClickableIcon onClick={() => setAppSelectorOpen(!appSelectorOpen)}>
-                    <Icon name="grid_on" size={32}/>
-                </ClickableIcon>
                 <StyledLink
                     style={{display: 'flex'}}
                     to={{
@@ -137,18 +98,6 @@ export const Header = (props: {
                 >
                     <h4 style={{paddingTop: 9, paddingLeft: 10}}>{appName}</h4>
                 </StyledLink>
-                {appSelectorOpen && (
-                    <AppSelectorWrapper>
-                        {sortApplications(allApps).map((app) => (
-                            <Link to={`/${app.urlPath}`} key={app.name}>
-                                <AppBox>{app?.label ? app.label : app.name}</AppBox>
-                            </Link>
-                        ))}
-                        <Link to={'/DMT/search'}>
-                            <AppBox>Search</AppBox>
-                        </Link>
-                    </AppSelectorWrapper>
-                )}
             </TopBar.Header>
             <TopBar.Actions>
                 <Icons>
