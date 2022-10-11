@@ -1,5 +1,5 @@
 {
-  "name": "DemoDS",
+  "name": "DemoApplicationDataSource",
   "repositories": {
     "forecastDB": {
       "type": "mongo-db",
