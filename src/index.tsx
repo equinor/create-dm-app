@@ -30,11 +30,10 @@ const authConfig = {
 
 const Test = () => {
     return (
-
         <UiPluginProvider pluginsToLoad={plugins}>
             {authEnabled ? (
                 <AuthProvider authConfig={authConfig}>
-                    <App/>
+                    <App />
                 </AuthProvider>
             ) : (
                 <App/>

@@ -21,7 +21,8 @@
     {
       "name": "Default",
       "type": "system/SIMOS/UiRecipe",
-      "plugin": "demoApp"
+      "plugin": "demoApp",
+      "category": "Application"
     }
   ]
 }

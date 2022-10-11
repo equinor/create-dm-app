@@ -7,7 +7,7 @@ import { useLocalStorage } from '@development-framework/dm-core'
 
 const { Sider } = Layout
 
-export default (props: { appRootPath: string }): JSX.Element => {
+const AppMenu = (props: { appRootPath: string }): JSX.Element => {
   const { appRootPath } = props
   const location = useLocation()
   const [collapsed, setCollapsed] = useLocalStorage('menuCollapsed', false)
@@ -36,3 +36,5 @@ export default (props: { appRootPath: string }): JSX.Element => {
     </Sider>
   )
 }
+
+export default AppMenu
