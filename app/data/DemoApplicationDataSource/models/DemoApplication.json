@@ -1,0 +1,27 @@
+{
+  "name": "DemoApplication",
+  "type": "system/SIMOS/Blueprint",
+  "extends": ["system/SIMOS/Application"],
+  "description": "",
+  "attributes": [
+    {
+      "name": "label",
+      "type": "system/SIMOS/BlueprintAttribute",
+      "attributeType": "string",
+      "optional": true
+    },
+    {
+      "name": "urlPath",
+      "type": "system/SIMOS/BlueprintAttribute",
+      "attributeType": "string",
+      "optional": false
+    }
+  ],
+  "uiRecipes": [
+    {
+      "name": "Default",
+      "type": "system/SIMOS/UiRecipe",
+      "plugin": "demoApp"
+    }
+  ]
+}
