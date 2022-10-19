@@ -63,12 +63,14 @@ function App() {
     )
   }
 
+  const visibleDataSources = ["DemoApplicationDataSource"]
+
   return (
     <ThemeProvider theme={theme}>
       <div>
         <GlobalStyle />
         <ApplicationContext.Provider value={application}>
-          <FSTreeProvider>
+          <FSTreeProvider visibleDataSources={visibleDataSources}>
             <UIPluginSelector
               absoluteDottedId={`${dataSourceId}/${application?._id}`}
               type={application?.type}

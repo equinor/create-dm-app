@@ -1232,10 +1232,10 @@
   resolved "https://registry.npmjs.org/@ctrl/tinycolor/-/tinycolor-3.4.1.tgz"
   integrity sha512-ej5oVy6lykXsvieQtqZxCOaLT+xD4+QNarq78cIYISHmZXshCvROLudpQN3lfL8G0NL7plMSSK+zlyvCaIJ4Iw==
 
-"@development-framework/dm-core@1.0.13":
-  version "1.0.13"
-  resolved "https://registry.yarnpkg.com/@development-framework/dm-core/-/dm-core-1.0.13.tgz#4fd009e7660c304a9a34cfccf27b9adc5b647e4e"
-  integrity sha512-F/MEohIu+NI+4H0BN/gqCyv0RNj/xRZ1x4rO0pgQpxw9N67L8DTzIN7jeg9x6M0BdGCK48fQFVeL4P6Ni0le+A==
+"@development-framework/dm-core@1.0.16":
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/@development-framework/dm-core/-/dm-core-1.0.16.tgz#7068dd4fa973066245e8d66f5ef18668faf0d4ec"
+  integrity sha512-SIvXdB/tYyW8idjYX1ody9SfbcYmT6ecfliXtfFr3c1ZlpBI414S52gAczVljm0dBOLlQD44zVm3L3UnsJeRmQ==
   dependencies:
     "@equinor/eds-core-react" "^0.20.0"
     "@equinor/eds-icons" "^0.12.0"
