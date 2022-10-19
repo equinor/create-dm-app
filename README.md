@@ -23,7 +23,8 @@ You’ll need to have Node 14.0.0 or later version on your local development mac
 To create a new app, you may choose one of the following methods:
 * `npx create-dm-app my-app`
 
-It will create a directory called my-app inside the current folder.
+It will create a directory called my-app inside the current folder. 
+Note: if you want to change the datasource name or add new data sources, the visibleDataSources list defined in [App.tsx](https://github.com/equinor/create-dm-app/blob/main/src/App.tsx) needs to be updated.
 
 Inside that directory, it will generate the initial project structure and install the transitive dependencies:
 
@@ -45,3 +46,20 @@ Create-dm-app is using [create-react-app](https://create-react-app.dev/) so go t
 
 If you want to work on the core and don't want to release new core versions to see the changes in create-dm-app, then change the  `@development-framework/dm-core` from inside `package.json` to point to core locally like `link:./../data-modelling-tool/web/packages/dmt-core/`. You have to run `yarn rollup`inside dm-core to get changes, since this will bild a new dist that will be picked-up by create-dm-app. 
 
+### Connecting to DMSS
+If you run the [DMSS API](https://github.com/equinor/data-modelling-storage-service) locally, it will by default be available at localhost:8000. If this is the case, you must update an environment variable. This is achieved by editing the start script in package.json:
+
+```json
+"start": "REACT_APP_DMSS_URL=http://localhost:8000 react-app-rewired start"
+```
+
+
+### Resetting data sources
+The [dm-cli](https://github.com/equinor/dm-cli) can be used for resetting datasources. The recommended way to run the cli tool is to:
+1) Create a new virtual python environment
+2) Activate the virtual environment 
+3) Install the dm-cli (available on [PyPi](https://pypi.org/project/dm-cli/) with 
+   ```bash
+   pip install dm-cli
+   ```
+4) Run commands from the dm-cli. 
