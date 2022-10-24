@@ -43,7 +43,7 @@ Create-dm-app is using [create-react-app](https://create-react-app.dev/) so go t
 
 ### Using the Tree component
 To use the Tree component from [dm-core](https://github.com/equinor/dm-core-packages), visible data sources must be specified. If you want to change the datasource name or add new data sources, the visibleDataSources list defined in your App.tsx needs to be updated. In the demo-app, 
-[App.tsx](https://github.com/equinor/create-dm-app/blob/main/src/App.tsx) only has one visible data source, DemoApplicationDataSource.
+[App.tsx](https://github.com/equinor/create-dm-app/blob/main/src/plugins/demo-app/App.tsx) only has one visible data source, DemoApplicationDataSource.
 
 ### Link core
 
