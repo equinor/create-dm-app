@@ -59,10 +59,20 @@ If you run the [DMSS API](https://github.com/equinor/data-modelling-storage-serv
 
 ### Resetting data sources
 The [dm-cli](https://github.com/equinor/dm-cli) can be used for resetting datasources. The recommended way to run the cli tool is to:
-1) Create a new virtual python environment
-2) Activate the virtual environment 
+1) Create a new virtual python environment with the bash command
+   ```bash
+   python -m venv .venv
+   ```
+2) Activate the virtual environment with the bash command
+   ```bash
+   source .venv/bin/activate
+   ```
 3) Install the dm-cli (available on [PyPi](https://pypi.org/project/dm-cli/) with 
    ```bash
    pip install dm-cli
    ```
-4) Run commands from the dm-cli. 
+4) Run commands from the dm-cli to reset the demo-app data source. 
+   ```bash
+   dm reset app
+   ```
+   (Note: it might be necessary to also reset the local DMSS data sources before resetting the demo app datasources, this can be done by navigating to the DMSS repo and run the command "docker-compose run --rm dmss reset-app")
