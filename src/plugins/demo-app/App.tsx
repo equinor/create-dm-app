@@ -4,7 +4,7 @@ import React, { useContext } from 'react'
 import { Route } from 'react-router-dom'
 import { Layout } from 'antd'
 import Routes from './Routes'
-import { ApplicationContext, TApp, TLayout } from '@development-framework/dm-core'
+import { ApplicationContext, TApp, TLayout, FSTreeProvider } from '@development-framework/dm-core'
 import Content from './layout/Content'
 import Menu from './layout/Menu'
 import { Header } from "./layout/Header";
@@ -28,9 +28,10 @@ const MainLayout = (props: TLayout) => {
 const App = (props: TApp): JSX.Element => {
   const settings = useContext(ApplicationContext)
   const urlPath = settings.urlPath ? `/${settings.urlPath}` : ''
+  const visibleDataSources = ["DemoApplicationDataSource"]
 
   return (
-    <>
+    <FSTreeProvider visibleDataSources={visibleDataSources}>
       {Routes.map((route) => (
         <Route
           exact
@@ -44,7 +45,7 @@ const App = (props: TApp): JSX.Element => {
           )}
         />
       ))}
-    </>
+    </FSTreeProvider>
   )
 }
 

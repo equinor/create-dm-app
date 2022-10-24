@@ -24,7 +24,6 @@ To create a new app, you may choose one of the following methods:
 * `npx create-dm-app my-app`
 
 It will create a directory called my-app inside the current folder. 
-Note: if you want to change the datasource name or add new data sources, the visibleDataSources list defined in [App.tsx](https://github.com/equinor/create-dm-app/blob/main/src/App.tsx) needs to be updated.
 
 Inside that directory, it will generate the initial project structure and install the transitive dependencies:
 
@@ -41,6 +40,10 @@ You will see the build errors and lint warnings in the console.
 Create-dm-app is using [create-react-app](https://create-react-app.dev/) so go to [create-react-app](https://github.com/facebook/create-react-app) to get a list of all possible commands, or just look inside the package.json file and under scripts.
 
 ## Development tips
+
+### Using the Tree component
+To use the Tree component from [dm-core](https://github.com/equinor/dm-core-packages), visible data sources must be specified. If you want to change the datasource name or add new data sources, the visibleDataSources list defined in your App.tsx needs to be updated. In the demo-app, 
+[App.tsx](https://github.com/equinor/create-dm-app/blob/main/src/App.tsx) only has one visible data source, DemoApplicationDataSource.
 
 ### Link core
 

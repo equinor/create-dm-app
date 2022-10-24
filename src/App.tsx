@@ -4,7 +4,6 @@ import React, { useContext } from "react";
 import "./App.css";
 import {
   ApplicationContext,
-  FSTreeProvider,
   useDocument,
   UIPluginSelector,
   UiPluginContext
@@ -63,20 +62,16 @@ function App() {
     )
   }
 
-  const visibleDataSources = ["DemoApplicationDataSource"]
-
   return (
     <ThemeProvider theme={theme}>
       <div>
         <GlobalStyle />
         <ApplicationContext.Provider value={application}>
-          <FSTreeProvider visibleDataSources={visibleDataSources}>
             <UIPluginSelector
               absoluteDottedId={`${dataSourceId}/${application?._id}`}
               type={application?.type}
               categories={['Application']}
             />
-          </FSTreeProvider>
         </ApplicationContext.Provider>
       </div>
     </ThemeProvider>
