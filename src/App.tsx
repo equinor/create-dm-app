@@ -1,34 +1,14 @@
 // @ts-nocheck
 
 import React, { useContext } from "react";
-import "./App.css";
 import {
   ApplicationContext,
-  FSTreeProvider,
   useDocument,
   UIPluginSelector,
-  UiPluginContext
+  UiPluginContext,
 } from "@development-framework/dm-core";
 import { Progress } from "@equinor/eds-core-react";
-import { createGlobalStyle, ThemeProvider } from "styled-components";
 import appSettings from './app-settings.json'
-
-const theme = {
-  flexboxgrid: {
-    gutterWidth: 0, // rem
-    outerMargin: 0, // rem
-  },
-};
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    padding: 0;
-    margin: 0;
-    font-family: Equinor-Regular, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-`;
 
 const _applicationId = appSettings.applicationId.split('/')
 const dataSourceId = _applicationId[0]
@@ -43,41 +23,26 @@ function App() {
 
   if (isLoading || isPluginsLoading)
     return (
-      <Progress.Circular
-        style={{
-          display: "block",
-          marginLeft: "auto",
-          marginRight: "auto",
-          marginTop: "150px",
-        }}
-      />
+      <Progress.Circular/>
     );
   
   if (error) {
     console.error(error)
     return (
       <div style={{ color: "red" }}>
-        {" "}
         <b>Error:</b>Failed to load data, see web console for details
       </div>
     )
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <div>
-        <GlobalStyle />
         <ApplicationContext.Provider value={application}>
-          <FSTreeProvider>
             <UIPluginSelector
               absoluteDottedId={`${dataSourceId}/${application?._id}`}
               type={application?.type}
               categories={['Application']}
             />
-          </FSTreeProvider>
         </ApplicationContext.Provider>
-      </div>
-    </ThemeProvider>
   );
 }
 

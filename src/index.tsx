@@ -1,11 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import {UiPluginProvider} from '@development-framework/dm-core'
 import plugins from './plugins'
 import {AuthProvider} from 'react-oauth2-code-pkce'
-import {BrowserRouter as Router} from 'react-router-dom'
 
 const fullCurrentURL = () =>
     `${window.location.pathname}${window.location.search}${window.location.hash}`
@@ -28,7 +26,7 @@ const authConfig = {
 }
 
 
-const Test = () => {
+const Content = () => {
     return (
         <UiPluginProvider pluginsToLoad={plugins}>
             {authEnabled ? (
@@ -42,10 +40,4 @@ const Test = () => {
     )
 }
 
-ReactDOM.render(
-    <Router>
-        <Test/>
-    </Router>
-    ,
-    document.getElementById('root')
-);
+ReactDOM.render(<Content/>,document.getElementById('root'));

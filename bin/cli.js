@@ -23,6 +23,9 @@ console.log(`Installing dependencies for ${repoName}`);
 const installedDeps = runCommand(installDepsCommand);
 if (!installedDeps) process.exit(-1);
 
+console.log('Cleaning up...');
+runCommand(`rm -rf ${repoName}/bin`)
+
 console.log(
   'Congratulations! You are ready. Follow the following commands to start'
 );
