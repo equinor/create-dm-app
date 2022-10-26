@@ -66,9 +66,8 @@ const StyledLink = styled(Link)`
 
 export const Header = (props: {
     appName: string
-    urlPath: string
 }): JSX.Element => {
-    const {appName, urlPath} = props
+    const {appName} = props
     const [version, setVersion] = useState<string>('Version not loaded')
     const {tokenData, token, logOut} = useContext(AuthContext)
     const [aboutOpen, setAboutOpen] = useState(false)
@@ -93,7 +92,7 @@ export const Header = (props: {
                 <StyledLink
                     style={{display: 'flex'}}
                     to={{
-                        pathname: `/${urlPath}`,
+                        pathname: `/}`,
                     }}
                 >
                     <h4 style={{paddingTop: 9, paddingLeft: 10}}>{appName}</h4>
