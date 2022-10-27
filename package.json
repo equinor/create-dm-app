@@ -29,8 +29,8 @@
     "@types/styled-components": "^4.1.18"
   },
   "scripts": {
-    "start": "REACT_APP_DMSS_URL=http://localhost:5001  REACT_APP_DM_JOB_URL=http://localhost:5000 react-scripts start",
-    "build": "REACT_APP_DMSS_URL=http://localhost:5001  REACT_APP_DM_JOB_URL=http://localhost:5000  react-scripts build",
+    "start": "REACT_APP_DMSS_URL=http://localhost:5000  REACT_APP_DM_JOB_URL=http://localhost:5001 react-scripts start",
+    "build": "REACT_APP_DMSS_URL=http://localhost:5000  REACT_APP_DM_JOB_URL=http://localhost:5001  react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

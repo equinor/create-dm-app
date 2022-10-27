@@ -17,7 +17,6 @@ const ContentWrapper = (props: TContent): JSX.Element => {
     data_source: string
     entity_id: string
   }>()
-
   return (
     <Content style={{ margin: '0px 0px 10px 0px' }}>
       {data_source && entity_id && (

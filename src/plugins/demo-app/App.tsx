@@ -33,7 +33,7 @@ const App = (): JSX.Element => {
       {Routes.map((route) => (
         <Route
           exact
-          path={'/'}
+          path={route.path}
           key={route.path}
           render={() => (
             <MainLayout
