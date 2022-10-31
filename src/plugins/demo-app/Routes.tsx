@@ -8,7 +8,7 @@ const Routes: Array<TRoute> = [
     content: Jobs,
   },
   {
-    path: '',
+    path: '/',
     content: Overview,
   },
 
