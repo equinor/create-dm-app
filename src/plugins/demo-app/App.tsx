@@ -27,24 +27,26 @@ const App = (): JSX.Element => {
 
   return (
     <FSTreeProvider visibleDataSources={settings.dataSources}>
-    <Router>
-      <Switch>
-
-      {Routes.map((route) => (
-        <Route
-          exact
-          path={route.path}
-          key={route.path}
-          render={() => (
-            <MainLayout
-              content={route.content}
-              settings={settings}
-            />
-          )}
-        />
-      ))}
-      </Switch>
-    </Router>
+        <Router>
+            <Switch>
+            {Routes.map((route) => {
+              return (
+                <Route path={route.path} exact key={route.path}>
+                  <MainLayout
+                    content={route.content}
+                    settings={settings}
+                    allApps={[]}
+                  />
+                </Route>
+              )
+            })}
+            <Route path="*">
+              <div style={{ textAlign: 'center', padding: '10%' }}>
+                Undefined route. Please go back.
+              </div>
+            </Route>
+          </Switch>
+        </Router>
     </FSTreeProvider>
   )
 }
