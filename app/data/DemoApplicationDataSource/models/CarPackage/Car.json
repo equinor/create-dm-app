@@ -1,0 +1,20 @@
+{
+  "name": "Car",
+  "type": "system/SIMOS/Blueprint",
+  "extends": ["system/SIMOS/NamedEntity"],
+  "description": "",
+  "attributes": [
+    {
+      "name": "color",
+      "type": "system/SIMOS/BlueprintAttribute",
+      "attributeType": "string"
+    },
+    {
+      "name": "wheels",
+      "type": "system/SIMOS/BlueprintAttribute",
+      "attributeType": "DemoApplicationDataSource/models/CarPacakge/Wheel",
+      "dimensions": "*"
+    }
+  ],
+  "uiRecipes": []
+}

@@ -32,6 +32,9 @@ const AppMenu = (): JSX.Element => {
         <Menu.Item key={"2"}>
           <Link to={{ pathname: 'jobs' }}>Job example</Link>
         </Menu.Item>
+        <Menu.Item key={"3"}>
+          <Link to={{ pathname: 'blueprint-interaction' }}>Blueprint interaction</Link>
+        </Menu.Item>
       </Menu>
     </Sider>
   )
