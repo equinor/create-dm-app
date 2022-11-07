@@ -1,0 +1,20 @@
+{
+  "type": "system/SIMOS/Blueprint",
+  "name": "Wheel",
+  "attributes": [
+    {
+      "name": "brand",
+      "optional": false,
+      "attributeType": "string",
+      "type": "system/SIMOS/BlueprintAttribute"
+    },
+    {
+      "name": "dimensions",
+      "attributeType": "string",
+      "type": "system/SIMOS/BlueprintAttribute",
+      "label": "string"
+    }
+  ],
+  "storageRecipes": [],
+  "uiRecipes": []
+}
