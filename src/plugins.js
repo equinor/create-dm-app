@@ -1,6 +1,5 @@
 const plugins = [
-    import("./plugins/demo-app/index"),
-    // import("@development-framework/dmt")
+    import("./plugins/demo-app"),
 ]
 
 export default plugins
