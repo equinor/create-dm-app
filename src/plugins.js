@@ -1,5 +1,3 @@
-const plugins = [
-    import("./plugins/demo-app"),
-]
+const plugins = [import('./plugins/demo-app')]
 
 export default plugins

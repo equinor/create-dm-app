@@ -93,7 +93,7 @@ export const Jobs = () => {
         _id: 'f5282220-4a90-4d02-8f34-b82255fc91d5',
         type: 'system/SIMOS/NamedEntity',
         // @ts-ignore
-        description: "sdrawkcab si siht"
+        description: 'sdrawkcab si siht',
       },
       runner: { type: 'WorkflowDS/Blueprints/ReverseDescription' },
       started: 'Not started',
@@ -105,7 +105,7 @@ export const Jobs = () => {
       dataSourceId: dataSource,
       document: JSON.stringify(jobEntity),
       directory: '/instances',
-      updateUncontained: true
+      updateUncontained: true,
     })
       .then((response: AxiosResponse<any>) => {
         setJobEntityId(`${dataSource}/${response.data.uid}`)

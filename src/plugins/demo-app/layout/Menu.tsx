@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Layout, Menu } from 'antd'
 import Icon from '../design/Icons'
@@ -26,14 +26,16 @@ const AppMenu = (): JSX.Element => {
         defaultSelectedKeys={[location.pathname]}
         mode="inline"
       >
-        <Menu.Item key={"1"} icon={<Icon name="home" size={iconSize} />}>
+        <Menu.Item key={'1'} icon={<Icon name="home" size={iconSize} />}>
           <Link to={{ pathname: '/' }}>Overview</Link>
         </Menu.Item>
-        <Menu.Item key={"2"}>
+        <Menu.Item key={'2'}>
           <Link to={{ pathname: 'jobs' }}>Job example</Link>
         </Menu.Item>
-        <Menu.Item key={"3"}>
-          <Link to={{ pathname: 'blueprint-interaction' }}>Blueprint interaction</Link>
+        <Menu.Item key={'3'}>
+          <Link to={{ pathname: 'blueprint-interaction' }}>
+            Blueprint interaction
+          </Link>
         </Menu.Item>
       </Menu>
     </Sider>
