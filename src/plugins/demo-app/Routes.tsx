@@ -1,7 +1,7 @@
 import { TRoute } from '@development-framework/dm-core'
-import {Overview} from "./pages/Overview";
-import {Jobs} from "./pages/JobExample";
-import {BlueprintInteraction} from "./pages/BlueprintInteraction";
+import { Overview } from './pages/Overview'
+import { Jobs } from './pages/JobExample'
+import { BlueprintInteraction } from './pages/BlueprintInteraction'
 
 const Routes: Array<TRoute> = [
   {
@@ -16,7 +16,6 @@ const Routes: Array<TRoute> = [
     path: '/blueprint-interaction',
     content: BlueprintInteraction,
   },
-
 ]
 
 export default Routes
