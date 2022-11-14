@@ -24,15 +24,23 @@
     "@types/node": "^16.11.58",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
-    "typescript": "^4.8.3",
     "@types/react-router-dom": "^5.3.3",
-    "@types/styled-components": "^4.1.18"
+    "@types/styled-components": "^4.1.18",
+    "@typescript-eslint/eslint-plugin": "^5.42.1",
+    "@typescript-eslint/parser": "^5.42.1",
+    "eslint": "^8.27.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.10",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.3"
   },
   "scripts": {
     "start": "REACT_APP_DMSS_URL=http://localhost:5000  REACT_APP_DM_JOB_URL=http://localhost:5001 react-scripts start",
     "build": "REACT_APP_DMSS_URL=http://localhost:5000  REACT_APP_DM_JOB_URL=http://localhost:5001  react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint:fix": "eslint --fix --ext .js,.jsx,.tsx,.ts ."
   },
   "eslintConfig": {
     "extends": [
