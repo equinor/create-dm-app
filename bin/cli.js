@@ -12,7 +12,16 @@ const runCommand = command => {
     return true;
 };
 
-const repoName = process.argv[2];
+function sanitize_string(command) {
+    const regex_expression = /^[\w\d-_]+$/ //only allow letters (\w), digits (\d), dash (-) and underscore (_)
+    if (regex_expression.test(command)) {
+        return command
+    } else {
+        throw new Error("Please use a valid repo name (no special characters allowed).")
+    }
+}
+
+const repoName = sanitize_string(process.argv[2]);
 const gitCheckoutCommand = `git clone --depth 1 https://github.com/equinor/create-dm-app ${repoName}`;
 const installDepsCommand = `cd ${repoName} && npm install`;
 
