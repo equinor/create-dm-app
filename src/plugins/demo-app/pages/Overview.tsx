@@ -1,7 +1,5 @@
-import { TDmtSettings } from '@development-framework/dm-core'
 import React, { ReactNode } from 'react'
 
-/* eslint-disable react/prop-types */
-export const Overview = (props: { settings: TDmtSettings }): ReactNode => {
+export const Overview = (props: { settings: any }): ReactNode => {
   return <>Overview</>
 }

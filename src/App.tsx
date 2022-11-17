@@ -12,13 +12,11 @@ import appSettings from './app-settings.json'
 
 const _applicationId = appSettings.applicationId.split('/')
 const dataSourceId = _applicationId[0]
-const applicationId = _applicationId[1]
 
 function App() {
   const { loading: isPluginsLoading } = useContext(UiPluginContext)
-  const [application, isLoading, error] = useDocument(
-    dataSourceId,
-    applicationId
+  const [application, isLoading, updateApplication, error] = useDocument(
+    appSettings.applicationId
   )
 
   if (isLoading || isPluginsLoading) return <Progress.Circular />

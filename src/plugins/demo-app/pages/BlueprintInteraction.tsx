@@ -5,26 +5,20 @@ import { AxiosResponse } from 'axios'
 
 export const BlueprintInteraction = () => {
   const packageName = 'CarPackage'
-  const dataSource = 'DemoApplicationDataSource'
   const { token } = useContext(AuthContext)
   const dmssApi = new DmssAPI(token)
   const [blueprints, setBlueprints] = useState<any[]>([])
   const [selectedBlueprint, setSelectedBlueprint] = useState<object>({})
 
   useEffect(() => {
-    fetchBlueprintsFromPackage(packageName)
-  }, [])
-
-  const fetchBlueprintsFromPackage = (pacakgeName: string) => {
     dmssApi
       .documentGetByPath({
-        dataSourceId: dataSource,
-        path: `models/${pacakgeName}`,
+        absolutePath: `sys://DemoApplicationDataSource/models/${packageName}`,
       })
       .then((response: AxiosResponse<any>) => {
         setBlueprints(response.data.content)
       })
-  }
+  }, [])
 
   return (
     <div>

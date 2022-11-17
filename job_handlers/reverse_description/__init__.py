@@ -8,7 +8,7 @@ import requests
 from services.job_handler_interface import Job, JobHandlerInterface, JobStatus
 from utils.logging import logger
 
-_SUPPORTED_TYPE = "WorkflowDS/Blueprints/ReverseDescription"
+_SUPPORTED_TYPE = "sys://WorkflowDS/Blueprints/ReverseDescription"
 
 
 class JobHandler(JobHandlerInterface):

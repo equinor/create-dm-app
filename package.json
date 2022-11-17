@@ -4,7 +4,7 @@
   "bin": "./bin/cli.js",
   "license": "MIT",
   "dependencies": {
-    "@development-framework/dm-core": "1.0.17",
+    "@development-framework/dm-core": "^1.0.23",
     "@equinor/eds-core-react": "^0.20.0",
     "@equinor/eds-icons": "^0.12.0",
     "@equinor/eds-tokens": "^0.7.0",
@@ -25,7 +25,6 @@
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
     "@types/react-router-dom": "^5.3.3",
-    "@types/styled-components": "^4.1.18",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
     "eslint": "^8.27.0",
@@ -33,6 +32,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.10",
     "prettier": "^2.7.1",
+    "@types/styled-components": "^4.1.18",
     "typescript": "^4.8.3"
   },
   "scripts": {

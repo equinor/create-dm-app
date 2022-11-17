@@ -1,9 +1,9 @@
-import { TRoute } from '@development-framework/dm-core'
 import { Overview } from './pages/Overview'
 import { Jobs } from './pages/JobExample'
 import { BlueprintInteraction } from './pages/BlueprintInteraction'
+import { ReactNode } from 'react'
 
-const Routes: Array<TRoute> = [
+const Routes: Array<{ path: string; content: ReactNode }> = [
   {
     path: '/jobs',
     content: Jobs,

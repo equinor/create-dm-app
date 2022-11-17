@@ -1,17 +1,17 @@
 {
-  "type": "system/SIMOS/Blueprint",
+  "type": "CORE:Blueprint",
   "name": "Wheel",
   "attributes": [
     {
       "name": "brand",
       "optional": false,
       "attributeType": "string",
-      "type": "system/SIMOS/BlueprintAttribute"
+      "type": "CORE:BlueprintAttribute"
     },
     {
       "name": "dimensions",
       "attributeType": "string",
-      "type": "system/SIMOS/BlueprintAttribute",
+      "type": "CORE:BlueprintAttribute",
       "label": "string"
     }
   ],

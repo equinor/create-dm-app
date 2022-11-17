@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { Layout } from 'antd'
 import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
 
-import { TContent, DocumentPath } from '@development-framework/dm-core'
+import { DocumentPath } from '@development-framework/dm-core'
+import { TApplicationSettings } from '../Types'
 
 const { Content } = Layout
 
@@ -11,7 +12,10 @@ const PageContent = styled.div`
   padding: 20px;
 `
 
-const ContentWrapper = (props: TContent): JSX.Element => {
+const ContentWrapper = (props: {
+  content: ReactNode
+  settings: TApplicationSettings
+}): JSX.Element => {
   const { content, settings } = props
   const { data_source, entity_id } = useParams<{
     data_source: string
