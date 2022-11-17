@@ -1,18 +1,18 @@
 {
   "name": "Car",
-  "type": "system/SIMOS/Blueprint",
-  "extends": ["system/SIMOS/NamedEntity"],
+  "type": "CORE:Blueprint",
+  "extends": ["CORE:NamedEntity"],
   "description": "",
   "attributes": [
     {
       "name": "color",
-      "type": "system/SIMOS/BlueprintAttribute",
+      "type": "CORE:BlueprintAttribute",
       "attributeType": "string"
     },
     {
       "name": "wheels",
-      "type": "system/SIMOS/BlueprintAttribute",
-      "attributeType": "DemoApplicationDataSource/models/CarPacakge/Wheel",
+      "type": "CORE:BlueprintAttribute",
+      "attributeType": "/CarPackage/Wheel",
       "dimensions": "*"
     }
   ],

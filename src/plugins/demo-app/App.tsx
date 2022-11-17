@@ -1,19 +1,22 @@
 // @ts-nocheck
 
-import React, { useContext } from 'react'
+import React, { ReactNode, useContext } from 'react'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import { Layout } from 'antd'
 import Routes from './Routes'
 import {
   ApplicationContext,
   FSTreeProvider,
-  TLayout,
 } from '@development-framework/dm-core'
 import Content from './layout/Content'
 import Menu from './layout/Menu'
 import { Header } from './layout/Header'
+import { TApplicationSettings } from './Types'
 
-const MainLayout = (props: TLayout) => {
+const MainLayout = (props: {
+  content: ReactNode
+  settings: TApplicationSettings
+}) => {
   const { content, settings } = props
   return (
     <>
@@ -27,7 +30,7 @@ const MainLayout = (props: TLayout) => {
 }
 
 const App = (): JSX.Element => {
-  const settings = useContext(ApplicationContext)
+  const settings: TApplicationSettings = useContext(ApplicationContext)
 
   return (
     <FSTreeProvider visibleDataSources={settings.dataSources}>
