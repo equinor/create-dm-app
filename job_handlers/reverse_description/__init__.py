@@ -8,7 +8,7 @@ import requests
 from services.job_handler_interface import Job, JobHandlerInterface, JobStatus
 from utils.logging import logger
 
-_SUPPORTED_TYPE = "sys://WorkflowDS/Blueprints/ReverseDescription"
+_SUPPORTED_TYPE = "dmss://WorkflowDS/Blueprints/ReverseDescription"
 
 
 class JobHandler(JobHandlerInterface):
@@ -24,9 +24,9 @@ class JobHandler(JobHandlerInterface):
             progress_file.write(progress)
 
     def __init__(
-        self,
-        job: Job,
-        data_source: str,
+            self,
+            job: Job,
+            data_source: str,
     ):
         super().__init__(job, data_source)
         self.headers = {"Access-Key": job.token}
@@ -36,7 +36,8 @@ class JobHandler(JobHandlerInterface):
     def _get_by_id(self, document_id: str, depth: int = 1, attribute: str = ""):
         params = {"depth": depth, "attribute": attribute}
         req = requests.get(
-            f"{os.environ.get('DMSS_API', 'http://dmss:5000')}/api/v1/documents/{document_id}", params=params, headers=self.headers  # type: ignore
+            f"{os.environ.get('DMSS_API', 'http://dmss:5000')}/api/v1/documents/{document_id}", params=params,
+            headers=self.headers  # type: ignore
         )  # type: ignore
         req.raise_for_status()
 
@@ -57,7 +58,7 @@ class JobHandler(JobHandlerInterface):
         self.update_progress("58%")
         sleep(2)
         self.update_progress("89%")
-        
+
         with open(f"{self.results_directory}/{self.job.job_uid}", "w") as result_file:
             result_file.write(result)
         logger.info("ReverseDescription job completed")

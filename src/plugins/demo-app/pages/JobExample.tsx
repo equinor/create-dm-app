@@ -91,11 +91,11 @@ export const Jobs = () => {
       applicationInput: {
         name: 'whatever',
         _id: 'f5282220-4a90-4d02-8f34-b82255fc91d5',
-        type: 'sys://system/SIMOS/NamedEntity',
+        type: 'dmss://system/SIMOS/NamedEntity',
         // @ts-ignore
         description: 'sdrawkcab si siht',
       },
-      runner: { type: 'sys://WorkflowDS/Blueprints/ReverseDescription' },
+      runner: { type: 'dmss://WorkflowDS/Blueprints/ReverseDescription' },
       started: 'Not started',
     }
   }
