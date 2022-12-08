@@ -23,11 +23,7 @@ class JobHandler(JobHandlerInterface):
         with open(self.progress_file, "w") as progress_file:
             progress_file.write(progress)
 
-    def __init__(
-            self,
-            job: Job,
-            data_source: str,
-    ):
+    def __init__(self, job: Job, data_source: str):
         super().__init__(job, data_source)
         self.headers = {"Access-Key": job.token}
         self.result_file = f"{self.results_directory}/{self.job.job_uid}"
