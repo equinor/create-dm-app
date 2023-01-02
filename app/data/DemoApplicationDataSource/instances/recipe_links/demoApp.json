@@ -1,0 +1,12 @@
+{
+  "type": "CORE:RecipeLink",
+  "_blueprintPath_": "/models/DemoApplication",
+  "uiRecipes": [
+    {
+      "name": "Default",
+      "type": "CORE:UiRecipe",
+      "plugin": "demoApp",
+      "category": "Application"
+    }
+  ]
+}

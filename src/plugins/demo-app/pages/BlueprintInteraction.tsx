@@ -21,7 +21,7 @@ export const BlueprintInteraction = () => {
   useEffect(() => {
     dmssApi
       .documentGetByPath({
-        absolutePath: `sys://${dataSourceName}/models/${packageName}`,
+        absolutePath: `dmss://${dataSourceName}/models/${packageName}`,
       })
       .then((response: AxiosResponse<any>) => {
         setBlueprints(response.data.content)

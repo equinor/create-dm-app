@@ -1,6 +1,6 @@
 # Create Data Modelling App
 
-Create new data modelling apps with just one command!
+Tool for quickly creating a _data modelling_ app skeleton
 
 ## Quick Overview
 
@@ -65,6 +65,21 @@ Once installed, pre-commit can be run with:
 pre-commit run --all-files
 ```
 
+### UiPlugins
+
+#### Adding a ui-plugin
+1. Create a folder in `src/plugins`. This will be your plugin, and must have a `index.js`-file that has a default export of the type `export const plugins: TPlugin[]`
+2. Add this plugin to the list of plugins to load in `src/plugins.js`
+3. Done!
+
+#### Using the ui-plugin
+
+Associate a blueprint type with a set of uiRecipes that uses the ui-plugin
+
+1. Create a `CORE:RecipeLink`-entity (see `app/data/DemoApplicationDataSource/instances/recipe_links/demoApp.json` as an example)
+2. Create a _lookup_ with the app name and the _RecipeLinks_ for it (DMSS must be running on localhost:5000)
+   - `dm create-lookup demo-app DemoApplicationDataSource/instances/recipe_links`
+
 ### Using the Tree component
 
 To use the Tree component from [dm-core](https://github.com/equinor/dm-core-packages), visible data sources must be
@@ -87,7 +102,7 @@ available at localhost:8000. If this is the case, you must update an environment
 the start script in package.json:
 
 ```json
-"start": "REACT_APP_DMSS_URL=http://localhost:8000 react-app-rewired start"
+"start": "REACT_APP_DMSS_URL=http://localhost:5000 react-app-rewired start"
 ```
 
 ### Resetting data sources
