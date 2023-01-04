@@ -32,7 +32,7 @@ class JobHandler(JobHandlerInterface):
     def _get_by_id(self, document_id: str, depth: int = 1, attribute: str = ""):
         params = {"depth": depth, "attribute": attribute}
         req = requests.get(
-            f"{os.environ.get('DMSS_API', 'http://dmss:5000')}/api/v1/documents/{document_id}", params=params,
+            f"{os.environ.get('DMSS_API', 'http://dmss:5000')}/api/documents/{document_id}", params=params,
             headers=self.headers  # type: ignore
         )  # type: ignore
         req.raise_for_status()
