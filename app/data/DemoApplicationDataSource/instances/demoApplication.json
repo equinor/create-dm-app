@@ -3,5 +3,23 @@
   "type": "TEST-MODELS:DemoApplication",
   "name": "demo-app",
   "label": "Demo App",
-  "dataSources": ["DemoApplicationDataSource"]
+  "dataSources": ["DemoApplicationDataSource"],
+  "_meta_": {
+    "type": "CORE:Meta",
+    "version": "0.0.1",
+    "dependencies": [
+      {
+        "alias": "CORE",
+        "address": "system/SIMOS",
+        "version": "0.0.1",
+        "protocol": "dmss"
+      },
+      {
+        "alias": "TEST-MODELS",
+        "address": "DemoApplicationDataSource/models",
+        "version": "0.0.1",
+        "protocol": "dmss"
+      }
+    ]
+  }
 }
