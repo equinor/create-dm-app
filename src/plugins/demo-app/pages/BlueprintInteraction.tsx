@@ -48,7 +48,7 @@ export const BlueprintInteraction = () => {
           <NewEntityButton
             type={`sys://${dataSourceName}/models/${packageName}/${selectedBlueprint.name}`}
             defaultDestination={`${dataSourceName}/instances`}
-            setReference={(createdEntity: TReference) =>
+            onCreated={(createdEntity: TReference) =>
               dmssApi
                 .documentGetById({
                   idReference: `${dataSourceName}/${createdEntity._id}`,
