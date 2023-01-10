@@ -46,7 +46,7 @@ export const BlueprintInteraction = () => {
         <>
           <JsonView style={{ paddingTop: '20px' }} data={selectedBlueprint} />
           <NewEntityButton
-            type={`sys://${dataSourceName}/models/${packageName}/${selectedBlueprint.name}`}
+            type={`dmss://${dataSourceName}/models/${packageName}/${selectedBlueprint.name}`}
             defaultDestination={`${dataSourceName}/instances`}
             onCreated={(createdEntity: TReference) =>
               dmssApi
