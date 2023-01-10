@@ -30,6 +30,8 @@ import {
   close_circle_outlined,
   remove_outlined,
   time,
+  work_outline,
+  file_description,
 } from '@equinor/eds-icons'
 
 Icon.add({
@@ -63,6 +65,8 @@ Icon.add({
   refresh,
   play,
   time,
+  work_outline,
+  file_description,
 })
 
 export default Icon
