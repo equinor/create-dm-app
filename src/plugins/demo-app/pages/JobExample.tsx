@@ -12,6 +12,7 @@ import {
 import React, { useContext, useState } from 'react'
 import { AxiosError, AxiosResponse } from 'axios'
 import { Chip } from '@equinor/eds-core-react'
+import { jsonContainer } from '../design/styles'
 
 const JobControl = (props: { jobEntityId: string }) => {
   const { jobEntityId } = props
@@ -115,21 +116,14 @@ export const Jobs = () => {
   }
 
   return (
-    <div
-      style={{
-        border: '1px solid green',
-        backgroundColor: 'lightgreen',
-        padding: '25px',
-      }}
-    >
+    <div>
       <button onClick={() => saveJobEntity(getJobEntity())}>
         Save job entity
       </button>
       <br />
+      <br />
       <label>Job Entity:</label>
-      <pre style={{ backgroundColor: 'darkolivegreen' }}>
-        {JSON.stringify(getJobEntity(), null, 2)}
-      </pre>
+      <pre style={jsonContainer}>{JSON.stringify(getJobEntity(), null, 2)}</pre>
 
       {jobEntityId && (
         <JobControl
