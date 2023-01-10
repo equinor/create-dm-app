@@ -89,7 +89,7 @@ export const Header = (props: { appName: string }): JSX.Element => {
         <StyledLink
           style={{ display: 'flex' }}
           to={{
-            pathname: `/}`,
+            pathname: `/`,
           }}
         >
           <h4 style={{ paddingTop: 9, paddingLeft: 10 }}>{appName}</h4>
@@ -111,7 +111,7 @@ export const Header = (props: { appName: string }): JSX.Element => {
         header={'About Data Modelling Tool'}
         width={'40vw'}
       >
-        <b>Last commit: {version}</b>
+        <b>Version: {version}</b>
       </Dialog>
       <Dialog
         isOpen={visibleUserInfo}
