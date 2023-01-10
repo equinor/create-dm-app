@@ -8,6 +8,7 @@ import {
 import React, { useContext, useEffect, useState } from 'react'
 import { SingleSelect } from '@equinor/eds-core-react'
 import { AxiosResponse } from 'axios'
+import { jsonContainer } from '../design/styles'
 
 export const BlueprintInteraction = () => {
   const dataSourceName = 'DemoApplicationDataSource'
@@ -44,7 +45,8 @@ export const BlueprintInteraction = () => {
       />
       {Object.keys(selectedBlueprint).length > 0 && (
         <>
-          <JsonView style={{ paddingTop: '20px' }} data={selectedBlueprint} />
+          <br />
+          <JsonView style={jsonContainer} data={selectedBlueprint} />
           <NewEntityButton
             type={`dmss://${dataSourceName}/models/${packageName}/${selectedBlueprint.name}`}
             defaultDestination={`${dataSourceName}/instances`}
@@ -60,8 +62,9 @@ export const BlueprintInteraction = () => {
           />
         </>
       )}
+      <br />
       {Object.keys(entity).length > 0 && (
-        <JsonView style={{ paddingTop: '20px' }} data={entity} />
+        <JsonView style={jsonContainer} data={entity} />
       )}
     </div>
   )
