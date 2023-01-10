@@ -34,19 +34,22 @@ export const BlueprintInteraction = () => {
       <p>Select a blueprint inside the package: {packageName}</p>
       <SingleSelect
         items={blueprints.map((blueprint) => blueprint.name)}
-        handleSelectedItemChange={(e) =>
+        handleSelectedItemChange={(e) => {
           setSelectedBlueprint(
             blueprints.find(
               (blueprint, index) => blueprints[index].name === e.selectedItem
             )
           )
-        }
+          setEntity({})
+        }}
         label={'Choose a blueprint'}
       />
       {Object.keys(selectedBlueprint).length > 0 && (
         <>
           <br />
+          <h2 style={{ paddingTop: '20px' }}>Blueprint:</h2>
           <JsonView style={jsonContainer} data={selectedBlueprint} />
+          <h2>Create new entity</h2>
           <NewEntityButton
             type={`dmss://${dataSourceName}/models/${packageName}/${selectedBlueprint.name}`}
             defaultDestination={`${dataSourceName}/instances`}

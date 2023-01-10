@@ -1,7 +1,9 @@
 {
   "name": "Car",
   "type": "CORE:Blueprint",
-  "extends": ["CORE:NamedEntity"],
+  "extends": [
+    "CORE:NamedEntity"
+  ],
   "description": "",
   "attributes": [
     {
@@ -12,7 +14,7 @@
     {
       "name": "wheels",
       "type": "CORE:BlueprintAttribute",
-      "attributeType": "/CarPackage/Wheel",
+      "attributeType": "/models/CarPackage/Wheel",
       "dimensions": "*"
     }
   ]
