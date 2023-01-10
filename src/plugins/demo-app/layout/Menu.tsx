@@ -29,10 +29,16 @@ const AppMenu = (): JSX.Element => {
         <Menu.Item key={'1'} icon={<Icon name="home" size={iconSize} />}>
           <Link to={{ pathname: '/' }}>Browse</Link>
         </Menu.Item>
-        <Menu.Item key={'2'}>
+        <Menu.Item
+          key={'2'}
+          icon={<Icon name={'work_outline'} size={iconSize} />}
+        >
           <Link to={{ pathname: 'jobs' }}>Job example</Link>
         </Menu.Item>
-        <Menu.Item key={'3'}>
+        <Menu.Item
+          key={'3'}
+          icon={<Icon name={'file_description'} size={iconSize} />}
+        >
           <Link to={{ pathname: 'blueprint-interaction' }}>
             Blueprint interaction
           </Link>
