@@ -1,3 +1,6 @@
-const plugins = [import('./plugins/demo-app')]
+const plugins = [
+  import('./plugins/demo-app'),
+  import('@development-framework/yaml-view'),
+]
 
 export default plugins

@@ -27,7 +27,7 @@ const AppMenu = (): JSX.Element => {
         mode="inline"
       >
         <Menu.Item key={'1'} icon={<Icon name="home" size={iconSize} />}>
-          <Link to={{ pathname: '/' }}>Overview</Link>
+          <Link to={{ pathname: '/' }}>Browse</Link>
         </Menu.Item>
         <Menu.Item key={'2'}>
           <Link to={{ pathname: 'jobs' }}>Job example</Link>
