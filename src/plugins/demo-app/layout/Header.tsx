@@ -108,7 +108,7 @@ export const Header = (props: { appName: string }): JSX.Element => {
       <Dialog
         isOpen={aboutOpen}
         closeScrim={() => setAboutOpen(false)}
-        header={'About Data Modelling Tool'}
+        header={'About'}
         width={'40vw'}
       >
         <b>Version: {version}</b>
