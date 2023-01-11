@@ -2,47 +2,110 @@
 
 Tool for quickly creating a _data modelling_ app skeleton
 
-## Quick Overview
+## Getting started
+
+By following these steps, you will have your own custom application up and running on your local machine.
+
+Requirements:
+
+- [Node 14.0.0](https://nodejs.org/en/) or later (We recommend using the latest LTS version).
+- [Docker compose](https://docs.docker.com/compose/)
+- [Python](https://www.python.org/) 3.8 or later
+
+### 1) Create a new application
+
+using the command (you can change `my-app` to your application name)
 
 ```
 npx @development-framework/create-dm-app my-app
-cd my-app
-npm start
 ```
 
 _([npx](https://medium.com/@maybekatz/introducing-npx-an-npm-package-runner-55f7d4bd282b) comes with npm 5.2+ and
 higher, see [instructions for older npm versions](https://gist.github.com/gaearon/4064d3c23a77c74a3614c498a8bb1c5f))_
 
-Then open [http://localhost:3000/](http://localhost:3000/) to see your app.<br>
-
-When you’re ready to deploy to production, create a minified bundle with `npm run build`.
-
-## Creating an App
-
-You’ll need to have Node 14.0.0 or later version on your local development machine (but it’s not required on the server)
-. We recommend using the latest LTS version.
-
-To create a new app, you may choose one of the following methods:
-
-* `npx create-dm-app my-app`
-
-It will create a directory called my-app inside the current folder.
-
-Inside that directory, it will generate the initial project structure and install the transitive dependencies:
-
-Inside the newly created project, you can run some built-in commands:
-
-### `npm start` or `yarn start`
-
-Runs the app in development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will automatically reload if you make changes to the code.<br>
-You will see the build errors and lint warnings in the console.
+This will create a new folder "my-app".
+Inside that folder, the initial project structure is generated and the transitive dependencies are installed.
 
 Create-dm-app is using [create-react-app](https://create-react-app.dev/) so go
 to [create-react-app](https://github.com/facebook/create-react-app) to get a list of all possible commands, or just look
 inside the package.json file and under scripts.
+
+### 2) Start DMSS
+
+To run your custom application locally, you will need an instance of DMSS running locally.
+
+Go to the `my-app` folder in a terminal and run the commands:
+
+```
+docker-compose pull
+docker-compose up build
+```
+
+_Note: you will need access to the docker container registry `datamodelingtool.azurecr.io`._
+
+To reset the database, open a new terminal window and navigate to the `my-app` folder and run the commands:
+
+```
+docker-compose run --rm dmss reset-app
+```
+
+### 3) Install dm-cli
+
+_Note: it is recommended to use a python virtual environment before you install the dm-cli package_
+
+```
+pip install dm-cli
+```
+
+### 4) Upload documents/models to DMSS
+
+Run the following command to upload the documents in the folder my-app/app to DMSS
+
+```
+dm reset app/
+```
+
+You must also upload documents from dm-job.
+When you are in the `my-app` folder in your terminal window, run the following commands
+
+```
+cd ..
+git clone git@github.com:equinor/dm-job.git
+dm reset dm-job/app
+```
+
+### 5) Create a lookup table in DMSS
+
+In your terminal window, go to the `my-app` and run
+
+```
+dm create-lookup demo-app DemoApplicationDataSource/instances/recipe_links
+```
+
+### 6) Start the web application
+
+When inside the `my-app` folder in the terminal, run
+
+```
+yarn install
+yarn start
+```
+
+or alternatively
+
+```
+npm install
+npm start
+```
+
+The web app can now be reached at [http://localhost:3000](http://localhost:3000) in the web browser.
+
+(Remember, you must have the docker-compose services running to use the web application)
+
+The web page will automatically reload if you make changes to the code.
+You will see the build errors and lint warnings in the console.
+
+When you’re ready to deploy to production, create a minified bundle with `npm run build`.
 
 ## Development tips
 
@@ -68,7 +131,9 @@ pre-commit run --all-files
 ### UiPlugins
 
 #### Adding a ui-plugin
-1. Create a folder in `src/plugins`. This will be your plugin, and must have a `index.js`-file that has a default export of the type `export const plugins: TPlugin[]`
+
+1. Create a folder in `src/plugins`. This will be your plugin, and must have a `index.js`-file that has a default export
+   of the type `export const plugins: TPlugin[]`
 2. Add this plugin to the list of plugins to load in `src/plugins.js`
 3. Done!
 
@@ -76,9 +141,10 @@ pre-commit run --all-files
 
 Associate a blueprint type with a set of uiRecipes that uses the ui-plugin
 
-1. Create a `CORE:RecipeLink`-entity (see `app/data/DemoApplicationDataSource/instances/recipe_links/demoApp.json` as an example)
+1. Create a `CORE:RecipeLink`-entity (see `app/data/DemoApplicationDataSource/instances/recipe_links/demoApp.json` as an
+   example)
 2. Create a _lookup_ with the app name and the _RecipeLinks_ for it (DMSS must be running on localhost:5000)
-   - `dm create-lookup demo-app DemoApplicationDataSource/instances/recipe_links`
+    - `dm create-lookup demo-app DemoApplicationDataSource/instances/recipe_links`
 
 ### Using the Tree component
 
