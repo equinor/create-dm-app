@@ -14,7 +14,7 @@ Requirements:
 
 ### 1) Create a new application
 
-using the command (you can change `my-app` to your application name)
+Using the command (you can change `my-app` to your application name)
 
 ```
 npx @development-framework/create-dm-app my-app
@@ -38,10 +38,8 @@ Go to the `my-app` folder in a terminal and run the commands:
 
 ```
 docker-compose pull
-docker-compose up build
+docker-compose up --build
 ```
-
-_Note: you will need access to the docker container registry `datamodelingtool.azurecr.io`._
 
 To reset the database, open a new terminal window and navigate to the `my-app` folder and run the commands:
 
@@ -66,12 +64,10 @@ dm reset app/
 ```
 
 You must also upload documents from dm-job.
-When you are in the `my-app` folder in your terminal window, run the following commands
+When you are in the `my-app` folder in your terminal window, run the following command
 
 ```
-cd ..
-git clone git@github.com:equinor/dm-job.git
-dm reset dm-job/app
+docker-compose run --rm job-api dm -u http://dmss:5000 reset ../app
 ```
 
 ### 5) Create a lookup table in DMSS
