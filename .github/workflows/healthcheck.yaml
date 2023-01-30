@@ -1,20 +1,26 @@
 on:
-  workflow_dispatch:
-  schedule:
-    - cron: '0 2 * * *' # Every day at UTC 2.00
+  workflow_call:
+    inputs:
+      asLatest:
+        description: 'Run with latest images and packages'
+        required: true
+        type: boolean
 
 env:
   APP_NAME: "my-app"
+  DC_ENV: "${{ inputs.asLatest && 'DMSS_TAG=latest JOB_API_TAG=latest' || '' }}"
 
 jobs:
-  tests:
+  healthcheck:
     runs-on: ubuntu-latest
     steps:
     - name: "Install dm-cli"
       run: pip install dm-cli
 
-    - name: "Install pm2"
-      run: npm install pm2 -g
+    - name: "Install pm2 and serve"
+      run: |
+        npm add -g pm2
+        npm add -g serve
 
     - name: "Create a new application"
       run: npx @development-framework/create-dm-app $APP_NAME
@@ -22,26 +28,33 @@ jobs:
     - name: "Start DMSS"
       run: |
         cd $APP_NAME
-        docker-compose pull
-        docker-compose up --build --detach
+        eval "$DC_ENV docker-compose pull"
+        eval "$DC_ENV docker-compose up --build --detach"
 
     - name: "Populate DMSS"
       run: |
         cd $APP_NAME
-        docker-compose run --rm dmss reset-app
+        eval "$DC_ENV docker-compose run --rm dmss reset-app"
         dm reset app/
-        docker-compose run --rm job-api dm -u http://dmss:5000 reset ../app
+        eval "$DC_ENV docker-compose run --rm job-api dm -u http://dmss:5000 reset ../app"
 
     - name: "Create lookup table in DMSS"
       run: |
         cd $APP_NAME
         dm create-lookup demo-app DemoApplicationDataSource/instances/recipe_links
 
+    - name: "Install latest plugins"
+      if: inputs.asLatest
+      run: |
+        cd $APP_NAME
+        npm add @development-framework/dm-core
+        npm add @development-framework/yaml-view
+
     - name: "Start the web application"
       run: |
         cd $APP_NAME
-        npm install
-        pm2 start npm -- start
+        npm run build
+        pm2 start "serve -s build"
 
     - name: "Curl frontend and backend"
       id: curl
