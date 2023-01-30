@@ -1,0 +1,15 @@
+name: "On schedule: healthcheck of standard and latest setup"
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *' # Every day at UTC 2.00
+
+jobs:
+  standard:
+    uses: ./.github/workflows/healthcheck.yaml
+    with:
+      asLatest: false
+  latest:
+    uses: ./.github/workflows/healthcheck.yaml
+    with:
+      asLatest: true
