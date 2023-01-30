@@ -1,4 +1,4 @@
-# Create Data Modelling App
+# Create Data Modelling App [![On schedule: healthcheck of standard and latest setup](https://github.com/equinor/create-dm-app/actions/workflows/on-schedule-nightly.yaml/badge.svg)](https://github.com/equinor/create-dm-app/actions/workflows/on-schedule-nightly.yaml)
 
 Tool for quickly creating a _data modelling_ app skeleton
 
