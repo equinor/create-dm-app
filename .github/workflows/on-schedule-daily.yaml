@@ -1,0 +1,65 @@
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *' # Every day at UTC 2.00
+
+env:
+  APP_NAME: "my-app"
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+    - name: "Install dm-cli"
+      run: pip install dm-cli
+
+    - name: "Install pm2"
+      run: npm install pm2 -g
+
+    - name: "Create a new application"
+      run: npx @development-framework/create-dm-app $APP_NAME
+
+    - name: "Start DMSS"
+      run: |
+        cd $APP_NAME
+        docker-compose pull
+        docker-compose up --build --detach
+
+    - name: "Populate DMSS"
+      run: |
+        cd $APP_NAME
+        docker-compose run --rm dmss reset-app
+        dm reset app/
+        docker-compose run --rm job-api dm -u http://dmss:5000 reset ../app
+
+    - name: "Create lookup table in DMSS"
+      run: |
+        cd $APP_NAME
+        dm create-lookup demo-app DemoApplicationDataSource/instances/recipe_links
+
+    - name: "Start the web application"
+      run: |
+        cd $APP_NAME
+        npm install
+        pm2 start npm -- start
+
+    - name: "Curl frontend and backend"
+      id: curl
+      run: |
+        sleep 5
+        echo "frontend-status-code=$(curl -s -o /dev/null -w "%{http_code}" localhost:3000)" >> $GITHUB_OUTPUT
+        echo "backend-status-code=$(curl -s -o /dev/null -w "%{http_code}" localhost:5000/api/healthcheck)" >> $GITHUB_OUTPUT
+
+    - name: "Stop DMSS"
+      run: |
+        cd $APP_NAME
+        docker-compose stop
+
+    - name: "Stop the web application"
+      run: pm2 stop 0
+    
+    - name: "Set workflow status"
+      if: ${{ steps.curl.outputs.frontend-status-code != 200 || steps.curl.outputs.backend-status-code != 200 }}
+      uses: actions/github-script@v6
+      with:
+        script: core.setFailed('Frontend or backend is not responding!')
