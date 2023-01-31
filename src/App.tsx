@@ -33,7 +33,7 @@ function App() {
   return (
     <ApplicationContext.Provider value={application}>
       <UIPluginSelector
-        absoluteDottedId={`${dataSourceId}/${application?._id}`}
+        idReference={`${dataSourceId}/${application?._id}`}
         type={application?.type}
         categories={['Application']}
       />

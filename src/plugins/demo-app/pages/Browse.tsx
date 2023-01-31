@@ -25,10 +25,7 @@ export const Browse = (props: { settings: any }): ReactNode => {
         />
       )}
       {selectedType && selectedEntity && (
-        <UIPluginSelector
-          type={selectedType}
-          absoluteDottedId={selectedEntity}
-        />
+        <UIPluginSelector type={selectedType} idReference={selectedEntity} />
       )}
     </>
   )
