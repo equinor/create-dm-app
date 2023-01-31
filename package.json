@@ -38,7 +38,7 @@
   },
   "scripts": {
     "start": "REACT_APP_DMSS_URL=http://localhost:5000  REACT_APP_DM_JOB_URL=http://localhost:5001 react-scripts start",
-    "build": "REACT_APP_DMSS_URL=http://localhost:5000  REACT_APP_DM_JOB_URL=http://localhost:5001  react-scripts build",
+    "build": "DISABLE_ESLINT_PLUGIN=true REACT_APP_DMSS_URL=http://localhost:5000  REACT_APP_DM_JOB_URL=http://localhost:5001  react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint:fix": "eslint --fix --ext .js,.jsx,.tsx,.ts ."
