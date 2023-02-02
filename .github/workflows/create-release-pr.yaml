@@ -16,7 +16,7 @@ jobs:
         id: release
         with:
           release-type: node
-          release-as: 0.1.0 # Temp. Remove after initial release-please PR has been merged
+          # release-as: 1.0.0 This config is needed for first stable release
           bump-minor-pre-major: true
           bump-patch-for-minor-pre-major: true
           package-name: '@development-framework/create-dm-app'
