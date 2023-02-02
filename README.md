@@ -83,13 +83,6 @@ dm create-lookup demo-app DemoApplicationDataSource/instances/recipe_links
 When inside the `my-app` folder in the terminal, run
 
 ```
-yarn install
-yarn start
-```
-
-or alternatively
-
-```
 npm install
 npm start
 ```
@@ -140,7 +133,7 @@ Associate a blueprint type with a set of uiRecipes that uses the ui-plugin
 1. Create a `CORE:RecipeLink`-entity (see `app/data/DemoApplicationDataSource/instances/recipe_links/demoApp.json` as an
    example)
 2. Create a _lookup_ with the app name and the _RecipeLinks_ for it (DMSS must be running on localhost:5000)
-    - `dm create-lookup demo-app DemoApplicationDataSource/instances/recipe_links`
+   - `dm create-lookup demo-app DemoApplicationDataSource/instances/recipe_links`
 
 ### Using the Tree component
 
@@ -153,8 +146,8 @@ source, DemoApplicationDataSource.
 ### Link core
 
 If you want to work on the core and don't want to release new core versions to see the changes in create-dm-app, then
-change the  `@development-framework/dm-core` from inside `package.json` to point to core locally
-like `link:./../data-modelling-tool/web/packages/dmt-core/`. You have to run `yarn rollup`inside dm-core to get changes,
+change the `@development-framework/dm-core` from inside `package.json` to point to core locally
+like `link:./../data-modelling-tool/web/packages/dmt-core/`. You have to run `yarn rollup` inside dm-core to get changes,
 since this will bild a new dist that will be picked-up by create-dm-app.
 
 ### Connecting to DMSS
@@ -172,19 +165,19 @@ the start script in package.json:
 The [dm-cli](https://github.com/equinor/dm-cli) can be used for resetting datasources. The recommended way to run the
 cli tool is to:
 
-1) Create a new virtual python environment with the bash command
+1. Create a new virtual python environment with the bash command
    ```bash
    python -m venv .venv
    ```
-2) Activate the virtual environment with the bash command
+2. Activate the virtual environment with the bash command
    ```bash
    source .venv/bin/activate
    ```
-3) Install the dm-cli (available on [PyPi](https://pypi.org/project/dm-cli/) with
+3. Install the dm-cli (available on [PyPi](https://pypi.org/project/dm-cli/) with
    ```bash
    pip install dm-cli
    ```
-4) Run commands from the dm-cli to reset the demo-app data source.
+4. Run commands from the dm-cli to reset the demo-app data source.
    ```bash
    dm reset app
    ```

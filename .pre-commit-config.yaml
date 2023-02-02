@@ -13,19 +13,17 @@ repos:
         exclude: ^.*\.(lock)$||^docs\/
       - id: detect-private-key
 
-
   - repo: https://github.com/pre-commit/mirrors-prettier
     rev: v3.0.0-alpha.4
     hooks:
       - id: prettier
         files: ^src/.*\.(ts|tsx|js|css|html|json)$
-        args: [ '--config=.prettierrc.js', '--ignore-path=.prettierignore' ]
-
+        args: ['--config=.prettierrc.js', '--ignore-path=.prettierignore']
 
   - repo: local
     hooks:
       - id: eslint
         name: ESlint
-        entry: sh -c "yarn install && npm run lint:fix"
+        entry: sh -c "npm install && npm run lint:fix"
         language: system
         pass_filenames: false
