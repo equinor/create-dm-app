@@ -21,3 +21,5 @@ jobs:
     needs: release-please
     if: ${{ needs.release-please.outputs.release_created }}
     uses: ./.github/workflows/publish-to-registry.yaml
+    secrets:
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
