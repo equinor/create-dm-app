@@ -31,3 +31,4 @@ coverage
 /dmss-data/
 /.venv/
 /job_handlers/reverse_description/results/
+.tool-versions

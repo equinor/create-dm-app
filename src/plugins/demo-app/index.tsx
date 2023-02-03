@@ -5,7 +5,6 @@ import App from './App'
 export const plugins: TPlugin[] = [
   {
     pluginName: 'demoApp',
-    pluginType: EPluginType.PAGE,
     component: App,
   },
 ]
