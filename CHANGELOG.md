@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.1.1](https://github.com/equinor/create-dm-app/compare/v0.1.0...v0.1.1) (2023-02-03)
+
+
+### Continuous Integration
+
+* Add missing secret to npm publish ([e171459](https://github.com/equinor/create-dm-app/commit/e171459352b168628be87e171328b23c8239dff3)), closes [#63](https://github.com/equinor/create-dm-app/issues/63)
+* Remove release-as ([41babc3](https://github.com/equinor/create-dm-app/commit/41babc370a38bf7102754a2e7080eb5f093cd44c)), closes [#63](https://github.com/equinor/create-dm-app/issues/63)
+* Use npm instead of yarn in ts test ([91f3c9d](https://github.com/equinor/create-dm-app/commit/91f3c9deaee3bf1874f14397ff33edd7449684e0)), closes [#63](https://github.com/equinor/create-dm-app/issues/63)
+
 ## 0.1.0 (2023-02-01)
 
 
