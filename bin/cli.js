@@ -24,10 +24,15 @@ function sanitize_string(command) {
 }
 
 const repoName = sanitize_string(process.argv[2])
-const gitCheckoutCommand = `git clone --depth 1 https://github.com/equinor/create-dm-app ${repoName}`
+const gitCloneCommand = `git clone --single-branch https://github.com/equinor/create-dm-app ${repoName}`
+const gitCheckoutCommand = `cd ${repoName} && LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1)) && git checkout "$LATEST_TAG"`
 const installDepsCommand = `cd ${repoName} && npm install`
 
 console.log(`Cloning the repository with name ${repoName}`)
+const cloned = runCommand(gitCloneCommand)
+if (!cloned) process.exit(-1)
+
+console.log(`Checking out latest stable version...`)
 const checkedOut = runCommand(gitCheckoutCommand)
 if (!checkedOut) process.exit(-1)
 
