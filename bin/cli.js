@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const { execSync } = require('child_process')
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const packageJson = require('../package.json')
 
 const runCommand = (command) => {
   try {
@@ -24,17 +26,12 @@ function sanitize_string(command) {
 }
 
 const repoName = sanitize_string(process.argv[2])
-const gitCloneCommand = `git clone --single-branch https://github.com/equinor/create-dm-app ${repoName}`
-const gitCheckoutCommand = `cd ${repoName} && LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1)) && git checkout "$LATEST_TAG"`
+const gitCloneCommand = `git clone --depth 1 --branch v${packageJson.version} https://github.com/equinor/create-dm-app ${repoName}`
 const installDepsCommand = `cd ${repoName} && npm install`
 
-console.log(`Cloning the repository with name ${repoName}`)
+console.log(`Cloning version v${packageJson.version} into ${repoName}`)
 const cloned = runCommand(gitCloneCommand)
 if (!cloned) process.exit(-1)
-
-console.log(`Checking out latest stable version...`)
-const checkedOut = runCommand(gitCheckoutCommand)
-if (!checkedOut) process.exit(-1)
 
 console.log(`Installing dependencies for ${repoName}`)
 const installedDeps = runCommand(installDepsCommand)
@@ -44,6 +41,7 @@ console.log('Cleaning up...')
 runCommand(`rm -rf ${repoName}/bin`)
 runCommand(`rm -rf ${repoName}/.git`)
 runCommand(`rm -rf ${repoName}/.github`)
+runCommand(`rm -rf ${repoName}/CHANGELOG.md`)
 
 console.log(
   'Congratulations! You are ready. Follow the following commands to start'
