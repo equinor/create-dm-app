@@ -6,6 +6,8 @@ import {
   useDocument,
   UIPluginSelector,
   UiPluginContext,
+  FSTreeContext,
+  FSTreeProvider,
 } from '@development-framework/dm-core'
 import { Progress } from '@equinor/eds-core-react'
 import appSettings from './app-settings.json'
@@ -32,11 +34,14 @@ function App() {
 
   return (
     <ApplicationContext.Provider value={application}>
-      <UIPluginSelector
+      <FSTreeProvider visibleDataSources={application.dataSources}>
+
+      <UIRecipeSelector
         idReference={`${dataSourceId}/${application?._id}`}
         type={application?.type}
         categories={['Application']}
-      />
+        />
+        </FSTreeProvider>
     </ApplicationContext.Provider>
   )
 }
