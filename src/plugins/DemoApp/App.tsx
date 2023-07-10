@@ -1,4 +1,4 @@
-// @ts-nocheck
+////@ts-nocheck
 
 import React, { ReactNode, useContext } from 'react'
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
@@ -42,7 +42,7 @@ const App = (): JSX.Element => {
                 <MainLayout
                   content={route.content}
                   settings={settings}
-                  allApps={[]}
+                  // allApps={[]} // should this be included in MainLayout or removed ?
                 />
               </Route>
             )

@@ -12,10 +12,12 @@
     "@equinor/eds-core-react": "^0.20.0",
     "@equinor/eds-icons": "^0.12.0",
     "@equinor/eds-tokens": "^0.7.0",
+    "@types/axios": "^0.14.0",
     "antd": "^4.21.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-oauth2-code-pkce": "^1.6.1",
+    "react-notifications": "^1.7.4",
+    "react-oauth2-code-pkce": "^1.14.0",
     "react-router-dom": "5.3.3",
     "react-scripts": "5.0.1",
     "styled-components": "^5.2.3"
@@ -32,6 +34,7 @@
     "@types/styled-components": "^4.1.18",
     "@typescript-eslint/eslint-plugin": "^5.42.1",
     "@typescript-eslint/parser": "^5.42.1",
+    "cross-env": "^7.0.3",
     "eslint": "^8.27.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -40,8 +43,8 @@
     "typescript": "^4.8.3"
   },
   "scripts": {
-    "start": "REACT_APP_DMSS_URL=http://localhost:5000  REACT_APP_DM_JOB_URL=http://localhost:5001 react-scripts start",
-    "build": "DISABLE_ESLINT_PLUGIN=true REACT_APP_DMSS_URL=http://localhost:5000  REACT_APP_DM_JOB_URL=http://localhost:5001  react-scripts build",
+    "start": "cross-env REACT_APP_DMSS_URL=http://localhost:5000  REACT_APP_DM_JOB_URL=http://localhost:5001 react-scripts start",
+    "build": "cross-env DISABLE_ESLINT_PLUGIN=true REACT_APP_DMSS_URL=http://localhost:5000  REACT_APP_DM_JOB_URL=http://localhost:5001 react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint:fix": "eslint --fix --ext .js,.jsx,.tsx,.ts ."

@@ -1,9 +1,10 @@
 import {
   AuthContext,
-  DmssAPI,
   JsonView,
   NewEntityButton,
+  TBlueprint,
   TReference,
+  useDMSS,
 } from '@development-framework/dm-core'
 import React, { useContext, useEffect, useState } from 'react'
 import { SingleSelect } from '@equinor/eds-core-react'
@@ -13,19 +14,18 @@ import { jsonContainer } from '../design/styles'
 export const BlueprintInteraction = () => {
   const dataSourceName = 'DemoApplicationDataSource'
   const packageName = 'CarPackage'
-  const { token } = useContext(AuthContext)
-  const dmssApi = new DmssAPI(token)
-  const [blueprints, setBlueprints] = useState<any[]>([])
+  const dmssApi = useDMSS()
+  const [blueprints, setBlueprints] = useState<TBlueprint[]>([])
   const [selectedBlueprint, setSelectedBlueprint] = useState<any>({})
   const [entity, setEntity] = useState<any>({})
 
   useEffect(() => {
     dmssApi
-      .documentGetByPath({
-        absolutePath: `dmss://${dataSourceName}/models/${packageName}`,
+      .documentGet({
+        address: `dmss://${dataSourceName}/models/${packageName}`,
       })
-      .then((response: AxiosResponse<any>) => {
-        setBlueprints(response.data.content)
+      .then((response: any) => {
+        setBlueprints(response.data)
       })
   }, [])
 
@@ -55,8 +55,8 @@ export const BlueprintInteraction = () => {
             defaultDestination={`${dataSourceName}/instances`}
             onCreated={(createdEntity: TReference) =>
               dmssApi
-                .documentGetById({
-                  idReference: `${dataSourceName}/${createdEntity._id}`,
+                .documentGet({
+                  address: `dmss://${dataSourceName}/$${createdEntity._id}`,
                 })
                 .then((response) => {
                   setEntity(response.data)
