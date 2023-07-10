@@ -4,9 +4,8 @@ import React, { useContext } from 'react'
 import {
   ApplicationContext,
   useDocument,
-  UIPluginSelector,
+  EntityView,
   UiPluginContext,
-  FSTreeContext,
   FSTreeProvider,
 } from '@development-framework/dm-core'
 import { Progress } from '@equinor/eds-core-react'
@@ -35,13 +34,12 @@ function App() {
   return (
     <ApplicationContext.Provider value={application}>
       <FSTreeProvider visibleDataSources={application.dataSources}>
-
-      <UIRecipeSelector
-        idReference={`${dataSourceId}/${application?._id}`}
-        type={application?.type}
-        categories={['Application']}
+        <EntityView
+          idReference={`${dataSourceId}/${application?._id}`}
+          type={application?.type}
+          categories={['Application']}
         />
-        </FSTreeProvider>
+      </FSTreeProvider>
     </ApplicationContext.Provider>
   )
 }
