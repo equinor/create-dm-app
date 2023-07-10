@@ -75,6 +75,7 @@ docker-compose run --rm job-api dm -u http://dmss:5000 reset ../app
 In your terminal window, go to the `my-app` and run
 
 ```
+dm import-plugin-blueprints ./node_modules/@development-framework/dm-core-plugins
 dm create-lookup demo-app DemoApplicationDataSource/instances/recipe_links
 ```
 
