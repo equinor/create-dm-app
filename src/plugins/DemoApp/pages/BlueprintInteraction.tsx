@@ -22,7 +22,6 @@ export const BlueprintInteraction = () => {
   useEffect(() => {
     dmssApi
       .documentGet({
-        // Denne het før documentGetFromAddress
         address: `dmss://${dataSourceName}/models/${packageName}`,
       })
       .then((response: any) => {
