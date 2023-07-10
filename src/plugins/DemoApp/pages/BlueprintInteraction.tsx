@@ -57,7 +57,7 @@ export const BlueprintInteraction = () => {
             onCreated={(createdEntity: TReference) =>
               dmssApi
                 .documentGet({
-                  address: `dmss://${dataSourceName}/${createdEntity._id}`,
+                  address: `dmss://${dataSourceName}/$${createdEntity._id}`,
                 })
                 .then((response) => {
                   setEntity(response.data)
