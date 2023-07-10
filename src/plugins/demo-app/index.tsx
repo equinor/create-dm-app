@@ -1,4 +1,4 @@
-import { EPluginType, TPlugin } from '@development-framework/dm-core'
+import { TPlugin } from '@development-framework/dm-core'
 
 import App from './App'
 
