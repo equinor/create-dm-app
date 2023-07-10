@@ -1,7 +1,7 @@
 {
   "_id": "4483c9b0-d505-46c9-a157-94c79f4d7a6a",
   "type": "TEST-MODELS:DemoApplication",
-  "name": "demo-app",
+  "name": "DemoApp",
   "label": "Demo App",
   "dataSources": ["DemoApplicationDataSource"],
   "_meta_": {
@@ -9,12 +9,14 @@
     "version": "0.0.1",
     "dependencies": [
       {
+        "type": "CORE:Dependency",
         "alias": "CORE",
         "address": "system/SIMOS",
         "version": "0.0.1",
         "protocol": "dmss"
       },
       {
+        "type": "CORE:Dependency",
         "alias": "TEST-MODELS",
         "address": "DemoApplicationDataSource/models",
         "version": "0.0.1",
