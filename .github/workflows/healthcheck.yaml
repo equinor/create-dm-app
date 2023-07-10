@@ -7,72 +7,72 @@ on:
         type: boolean
 
 env:
-  APP_NAME: "my-app"
+  APP_NAME: 'my-app'
   DC_ENV: "${{ inputs.asLatest && 'DMSS_TAG=latest JOB_API_TAG=latest' || '' }}"
 
 jobs:
   healthcheck:
     runs-on: ubuntu-latest
     steps:
-    - name: "Install dm-cli"
-      run: pip install dm-cli
+      - name: 'Install dm-cli'
+        run: pip install dm-cli
 
-    - name: "Install pm2 and serve"
-      run: |
-        npm add -g pm2
-        npm add -g serve
+      - name: 'Install pm2 and serve'
+        run: |
+          npm add -g pm2
+          npm add -g serve
 
-    - name: "Create a new application"
-      run: npx @development-framework/create-dm-app $APP_NAME
+      - name: 'Create a new application'
+        run: npx @development-framework/create-dm-app $APP_NAME
 
-    - name: "Start DMSS"
-      run: |
-        cd $APP_NAME
-        eval "$DC_ENV docker-compose pull"
-        eval "$DC_ENV docker-compose up --build --detach"
+      - name: 'Start DMSS'
+        run: |
+          cd $APP_NAME
+          eval "$DC_ENV docker-compose pull"
+          eval "$DC_ENV docker-compose up --build --detach"
 
-    - name: "Populate DMSS"
-      run: |
-        cd $APP_NAME
-        eval "$DC_ENV docker-compose run --rm dmss reset-app"
-        dm reset app/
-        eval "$DC_ENV docker-compose run --rm job-api dm -u http://dmss:5000 reset ../app"
+      - name: 'Populate DMSS'
+        run: |
+          cd $APP_NAME
+          eval "$DC_ENV docker-compose run --rm dmss reset-app"
+          dm reset app/
+          eval "$DC_ENV docker-compose run --rm job-api dm -u http://dmss:5000 reset ../app"
 
-    - name: "Create lookup table in DMSS"
-      run: |
-        cd $APP_NAME
-        dm create-lookup demo-app DemoApplicationDataSource/instances/recipe_links
+      - name: 'Create lookup table in DMSS'
+        run: |
+          cd $APP_NAME
+          dm create-lookup DemoApp DemoApplicationDataSource/instances/recipe_links
 
-    - name: "Install latest plugins"
-      if: inputs.asLatest
-      run: |
-        cd $APP_NAME
-        npm add @development-framework/dm-core
-        npm add @development-framework/yaml-view
+      - name: 'Install latest plugins'
+        if: inputs.asLatest
+        run: |
+          cd $APP_NAME
+          npm add @development-framework/dm-core
+          npm add @development-framework/yaml-view
 
-    - name: "Start the web application"
-      run: |
-        cd $APP_NAME
-        npm run build
-        pm2 start "serve -s build"
+      - name: 'Start the web application'
+        run: |
+          cd $APP_NAME
+          npm run build
+          pm2 start "serve -s build"
 
-    - name: "Curl frontend and backend"
-      id: curl
-      run: |
-        sleep 5
-        echo "frontend-status-code=$(curl -s -o /dev/null -w "%{http_code}" localhost:3000)" >> $GITHUB_OUTPUT
-        echo "backend-status-code=$(curl -s -o /dev/null -w "%{http_code}" localhost:5000/api/healthcheck)" >> $GITHUB_OUTPUT
+      - name: 'Curl frontend and backend'
+        id: curl
+        run: |
+          sleep 5
+          echo "frontend-status-code=$(curl -s -o /dev/null -w "%{http_code}" localhost:3000)" >> $GITHUB_OUTPUT
+          echo "backend-status-code=$(curl -s -o /dev/null -w "%{http_code}" localhost:5000/api/healthcheck)" >> $GITHUB_OUTPUT
 
-    - name: "Stop DMSS"
-      run: |
-        cd $APP_NAME
-        docker-compose stop
+      - name: 'Stop DMSS'
+        run: |
+          cd $APP_NAME
+          docker-compose stop
 
-    - name: "Stop the web application"
-      run: pm2 stop 0
-    
-    - name: "Set workflow status"
-      if: ${{ steps.curl.outputs.frontend-status-code != 200 || steps.curl.outputs.backend-status-code != 200 }}
-      uses: actions/github-script@v6
-      with:
-        script: core.setFailed('Frontend or backend is not responding!')
+      - name: 'Stop the web application'
+        run: pm2 stop 0
+
+      - name: 'Set workflow status'
+        if: ${{ steps.curl.outputs.frontend-status-code != 200 || steps.curl.outputs.backend-status-code != 200 }}
+        uses: actions/github-script@v6
+        with:
+          script: core.setFailed('Frontend or backend is not responding!')

@@ -8,7 +8,7 @@
       "username": "maf",
       "password": "maf",
       "tls": false,
-      "database": "demo-app",
+      "database": "DemoApp",
       "collection": "default",
       "data_types": [
         "blob"

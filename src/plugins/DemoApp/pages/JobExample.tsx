@@ -1,12 +1,12 @@
 import {
   AuthContext,
-  DmssAPI,
   EBlueprint,
   ErrorResponse,
   GetJobResultResponse,
   JobStatus,
   Loading,
   TJob,
+  useDMSS,
   useJob,
 } from '@development-framework/dm-core'
 import React, { useContext, useState } from 'react'
@@ -77,8 +77,7 @@ const JobControl = (props: { jobEntityId: string }) => {
 }
 
 export const Jobs = () => {
-  const { token } = useContext(AuthContext)
-  const DmssApi = new DmssAPI(token)
+  const dmssApi = useDMSS()
   const [jobEntityId, setJobEntityId] = useState<string>()
   const dataSource = 'DemoApplicationDataSource'
 
@@ -102,12 +101,13 @@ export const Jobs = () => {
   }
 
   const saveJobEntity = (jobEntity: any) => {
-    DmssApi.documentAddToPath({
-      pathReference: `${dataSource}/instances`,
-      document: JSON.stringify(jobEntity),
-      updateUncontained: true,
-    })
-      .then((response: AxiosResponse<any>) => {
+    dmssApi
+      .documentAdd({
+        address: `${dataSource}/instances`,
+        document: JSON.stringify(jobEntity),
+        updateUncontained: true,
+      })
+      .then((response: any) => {
         setJobEntityId(`${dataSource}/${response.data.uid}`)
       })
       .catch((error: AxiosError<ErrorResponse>) => {
