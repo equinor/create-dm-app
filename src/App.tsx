@@ -16,7 +16,7 @@ const dataSourceId = _applicationId[0]
 
 function App() {
   const { loading: isPluginsLoading } = useContext(UiPluginContext)
-  const [application, isLoading, updateApplication, error] = useDocument(
+  const [application, isLoading, , error] = useDocument(
     appSettings.applicationId
   )
 

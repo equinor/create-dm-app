@@ -6,7 +6,7 @@ import {
   TreeView,
 } from '@development-framework/dm-core'
 
-export const Browse = (props: { settings: any }): ReactNode => {
+export const Browse = (): ReactNode => {
   const { treeNodes, loading } = useContext(FSTreeContext)
   const [selectedType, setSelectedType] = useState<string>()
   const [selectedEntity, setSelectedEntity] = useState<string>()
