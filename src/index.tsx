@@ -25,6 +25,8 @@ const authConfig = {
   },
 }
 
+console.log(plugins)
+
 const Content = () => {
   return (
     <React.StrictMode>
