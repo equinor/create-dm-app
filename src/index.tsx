@@ -25,7 +25,7 @@ const authConfig = {
   },
 }
 
-console.log(plugins)
+console.log('Plugins: ', plugins)
 
 const Content = () => {
   return (
