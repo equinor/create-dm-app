@@ -2,6 +2,6 @@ import { TPlugin } from '@development-framework/dm-core'
 
 import { plugins } from '@development-framework/dm-core-plugins'
 
-const plugins_ = [import('./plugins/DemoApp'), plugins]
+const _plugins = [import('./plugins/DemoApp'), ...plugins]
 
-export default plugins_
+export default _plugins
