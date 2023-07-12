@@ -4,17 +4,16 @@ import { grid_on, info_circle, account_circle } from '@equinor/eds-icons'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-// @ts-ignore
 import { NotificationManager } from 'react-notifications'
 import axios, { AxiosResponse } from 'axios'
 import { AuthContext } from 'react-oauth2-code-pkce'
 import {
   APP_ROLES,
   DMSS_ADMIN_ROLE,
-  DmssAPI,
+  useDMSS,
   Dialog,
 } from '@development-framework/dm-core'
-import useLocalStorage from 'react-oauth2-code-pkce/dist/Hooks'
+import useBrowserStorage from 'react-oauth2-code-pkce/dist/Hooks'
 
 Icon.add({
   grid_on,
@@ -70,10 +69,11 @@ export const Header = (props: { appName: string }): JSX.Element => {
   const [aboutOpen, setAboutOpen] = useState(false)
   const [visibleUserInfo, setVisibleUserInfo] = useState<boolean>(false)
   const [apiKey, setAPIKey] = useState<string | null>(null)
-  const dmssApi = new DmssAPI(token)
-  const [checked, updateChecked] = useLocalStorage<string | null>(
+  const dmssApi = useDMSS()
+  const [checked, updateChecked] = useBrowserStorage<string | null>(
     'impersonateRoles',
-    null
+    null,
+    'local'
   )
 
   useEffect(() => {

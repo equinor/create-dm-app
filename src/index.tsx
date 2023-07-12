@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
-import { UiPluginProvider } from '@development-framework/dm-core'
+import { DMSSProvider, UiPluginProvider } from '@development-framework/dm-core'
 import plugins from './plugins'
 import { AuthProvider } from 'react-oauth2-code-pkce'
 
@@ -27,15 +27,19 @@ const authConfig = {
 
 const Content = () => {
   return (
-    <UiPluginProvider pluginsToLoad={plugins}>
-      {authEnabled ? (
-        <AuthProvider authConfig={authConfig}>
-          <App />
-        </AuthProvider>
-      ) : (
-        <App />
-      )}
-    </UiPluginProvider>
+    <React.StrictMode>
+      <DMSSProvider>
+        <UiPluginProvider pluginsToLoad={plugins}>
+          {authEnabled ? (
+            <AuthProvider authConfig={authConfig}>
+              <App />
+            </AuthProvider>
+          ) : (
+            <App />
+          )}
+        </UiPluginProvider>
+      </DMSSProvider>
+    </React.StrictMode>
   )
 }
 

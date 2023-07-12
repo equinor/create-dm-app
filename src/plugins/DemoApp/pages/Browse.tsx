@@ -2,7 +2,7 @@ import React, { ReactNode, useContext, useState } from 'react'
 import {
   FSTreeContext,
   TreeNode,
-  UIPluginSelector,
+  EntityView,
   TreeView,
 } from '@development-framework/dm-core'
 
@@ -25,7 +25,11 @@ export const Browse = (props: { settings: any }): ReactNode => {
         />
       )}
       {selectedType && selectedEntity && (
-        <UIPluginSelector type={selectedType} idReference={selectedEntity} />
+        <EntityView
+          type={selectedType}
+          idReference={selectedEntity}
+          key={selectedEntity}
+        />
       )}
     </>
   )

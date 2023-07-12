@@ -3,7 +3,6 @@ import { Layout } from 'antd'
 import styled from 'styled-components'
 import { useParams } from 'react-router-dom'
 
-import { DocumentPath } from '@development-framework/dm-core'
 import { TApplicationSettings } from '../Types'
 
 const { Content } = Layout
@@ -24,7 +23,9 @@ const ContentWrapper = (props: {
   return (
     <Content style={{ margin: '0px 0px 10px 0px' }}>
       {data_source && entity_id && (
-        <DocumentPath absoluteDottedId={`${data_source}/${entity_id}`} />
+        <h2>
+          dmss://{data_source}/{entity_id}
+        </h2> // removed DocumentPath react component, because no longer exists.
       )}
       {/*@ts-ignore*/}
       <PageContent>{content({ settings: settings })}</PageContent>

@@ -77,7 +77,6 @@ In your terminal window, go to the `my-app` and run
 ```
 dm import-plugin-blueprints ./node_modules/@development-framework/dm-core-plugins
 dm create-lookup demo-app DemoApplicationDataSource/instances/recipe_links
-```
 
 ### 6) Start the web application
 
@@ -134,14 +133,14 @@ Associate a blueprint type with a set of uiRecipes that uses the ui-plugin
 1. Create a `CORE:RecipeLink`-entity (see `app/data/DemoApplicationDataSource/instances/recipe_links/demoApp.json` as an
    example)
 2. Create a _lookup_ with the app name and the _RecipeLinks_ for it (DMSS must be running on localhost:5000)
-   - `dm create-lookup demo-app DemoApplicationDataSource/instances/recipe_links`
+   - `dm create-lookup DemoApp DemoApplicationDataSource/instances/recipe_links`
 
 ### Using the Tree component
 
 To use the Tree component from [dm-core](https://github.com/equinor/dm-core-packages), visible data sources must be
 specified. If you want to change the datasource name or add new data sources, the visibleDataSources list defined in
-your App.tsx needs to be updated. In the demo-app,
-[App.tsx](https://github.com/equinor/create-dm-app/blob/main/src/plugins/demo-app/App.tsx) only has one visible data
+your App.tsx needs to be updated. In the DemoApp,
+[App.tsx](https://github.com/equinor/create-dm-app/blob/main/src/plugins/DemoApp/App.tsx) only has one visible data
 source, DemoApplicationDataSource.
 
 ### Link core
@@ -178,7 +177,7 @@ cli tool is to:
    ```bash
    pip install dm-cli
    ```
-4. Run commands from the dm-cli to reset the demo-app data source.
+4. Run commands from the dm-cli to reset the DemoApp data source.
    ```bash
    dm reset app
    ```
