@@ -12,7 +12,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: maf
       SECRET_KEY: sg9aeUM5i1JO4gNN8fQadokJa3_gXQMLBjSGGYcfscs= # Don't reuse this in production...
     ports:
-      - "5000:5000"
+      - "5051:5000"
     depends_on:
       - db
 

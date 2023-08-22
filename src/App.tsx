@@ -1,46 +1,20 @@
-// @ts-nocheck
-
-import React, { useContext } from 'react'
-import {
-  ApplicationContext,
-  useDocument,
-  EntityView,
-  UiPluginContext,
-  FSTreeProvider,
-} from '@development-framework/dm-core'
-import { Progress } from '@equinor/eds-core-react'
-import appSettings from './app-settings.json'
-
-const _applicationId = appSettings.applicationId.split('/')
-const dataSourceId = _applicationId[0]
+import '@development-framework/dm-core/dist/main.css'
+import { useDocument, EntityView } from '@development-framework/dm-core'
+import React, { useContext, useState } from 'react'
+import { Typography } from '@equinor/eds-core-react'
 
 function App() {
-  const { loading: isPluginsLoading } = useContext(UiPluginContext)
-  const [application, isLoading, , error] = useDocument(
-    appSettings.applicationId
-  )
-
-  if (isLoading || isPluginsLoading) return <Progress.Circular />
-
-  if (error) {
-    console.error(error)
-    return (
-      <div style={{ color: 'red' }}>
-        <b>Error:</b>Failed to load data, see web console for details
-      </div>
-    )
-  }
-
+  const applicationId =
+    'DemoApplicationDataSource/$4483c9b0-d505-46c9-a157-94c79f4d7a6a'
+  const [application, isLoading, , error] = useDocument(applicationId)
+  if (isLoading) return <div>Loading...</div>
+  console.log(application)
   return (
-    <ApplicationContext.Provider value={application}>
-      <FSTreeProvider visibleDataSources={application.dataSources}>
-        <EntityView
-          idReference={`${dataSourceId}/${application?._id}`}
-          type={application?.type}
-          categories={['Application']}
-        />
-      </FSTreeProvider>
-    </ApplicationContext.Provider>
+    <div>app loaded.. </div>
+    //           <EntityView
+    //             type={application.type}
+    //             idReference={applicationId}
+    //           />
   )
 }
 

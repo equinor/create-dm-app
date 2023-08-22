@@ -1,11 +1,11 @@
 {
   "type": "CORE:RecipeLink",
-  "_blueprintPath_": "/models/DemoApplication",
+  "_blueprintPath_": "../blueprints/DemoApplication",
   "uiRecipes": [
     {
       "name": "Default",
       "type": "CORE:UiRecipe",
-      "plugin": "demoApp",
+      "plugin": "@development-framework/dm-core-plugins/yaml",
       "category": "Application"
     }
   ]
