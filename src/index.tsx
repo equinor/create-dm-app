@@ -7,21 +7,21 @@ import {
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './App'
-import { createRoot } from 'react-dom/client';
+import { createRoot } from 'react-dom/client'
 
 import plugins from './plugins'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 const APP_SETTINGS = {
-  visibleDataSources: ['DemoApplicationDataSource'],
+  visibleDataSources: [import.meta.env.VITE_DATA_SOURCE],
   name: 'DemoApp',
   urlPath: 'http://localhost',
 }
 
-const container = document.getElementById('root');
+const container = document.getElementById('root')
 
-const root = createRoot(container!);
+const root = createRoot(container!)
 root.render(
   <React.StrictMode>
     <DMSSProvider>

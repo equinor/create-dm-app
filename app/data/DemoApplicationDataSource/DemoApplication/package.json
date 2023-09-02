@@ -1,5 +1,5 @@
 {
-  "name": "DemoApplicationPackage",
+  "name": "DemoApplication",
   "type": "CORE:Package",
   "isRoot": true,
   "_meta_": {
@@ -10,6 +10,13 @@
         "type": "CORE:Dependency",
         "alias": "CORE",
         "address": "system/SIMOS",
+        "version": "0.0.1",
+        "protocol": "dmss"
+      },
+      {
+        "type": "CORE:Dependency",
+        "alias": "PLUGINS",
+        "address": "system/Plugins",
         "version": "0.0.1",
         "protocol": "dmss"
       }
