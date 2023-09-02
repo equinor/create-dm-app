@@ -17,6 +17,15 @@ function App() {
 
   if (isLoading) return <Progress.Circular />
 
+  if (error) {
+    console.error(error)
+    return (
+      <div style={{ color: 'red' }}>
+        <b>Error:</b>Failed to load data, see web console for details
+      </div>
+    )
+  }
+
   return (
     <FSTreeProvider
       visibleDataSources={import.meta.env.VITE_VISIBLE_DATA_SOURCES.split(',')}
