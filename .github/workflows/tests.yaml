@@ -21,3 +21,6 @@ jobs:
 
       - name: 'Test for typescript errors'
         run: npx tsc
+
+      - name: 'Run unit tests'
+        run: npm test
