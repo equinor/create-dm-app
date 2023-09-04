@@ -1,5 +1,64 @@
 # Changelog
 
+## [0.1.2](https://github.com/equinor/create-dm-app/compare/v0.1.1...v0.1.2) (2023-09-04)
+
+
+### Features
+
+* add form plugin ([2f81b22](https://github.com/equinor/create-dm-app/commit/2f81b2239f0d994fcd6fc7edba8b231f2538ffec))
+* **cli:** running create-dm-app use latest tag ([2bd33d5](https://github.com/equinor/create-dm-app/commit/2bd33d5655d1067ed36e2d4484314c5bf5948393))
+
+
+### Bug Fixes
+
+* adding type: Dependency to json models to avoid error ([e2f3f81](https://github.com/equinor/create-dm-app/commit/e2f3f8110d94a4962a00c934dd7b269647c6a7ef))
+* cross-env so build and start commands work on both windows and mac ([7f171e8](https://github.com/equinor/create-dm-app/commit/7f171e89868d7c442b3a525b4abdb7fb4cf9effc))
+* dependency is now to dm-core-plugins, instead of separate plugins ([f780820](https://github.com/equinor/create-dm-app/commit/f780820f137f50b31ee0f2b658733e89a701a861))
+* dependency is now to dm-core-plugins, instead of separate plugins ([a77703b](https://github.com/equinor/create-dm-app/commit/a77703b94d5ab4c6641d64d5dd2a3fbb1254f890))
+* docker images dependencies changed to be updated ([dfc5a7b](https://github.com/equinor/create-dm-app/commit/dfc5a7b508cc5d79a38ae6b2257708e81f47928b))
+* make pre-commit run green ([b12e2ca](https://github.com/equinor/create-dm-app/commit/b12e2ca7a0c21a5408742bebd1730fadb31896c0))
+* make remove unused variable ([df69901](https://github.com/equinor/create-dm-app/commit/df699013240cc17c1e1c8e2f2422f18f3747fc0c))
+* remove djfn ([4b0d93a](https://github.com/equinor/create-dm-app/commit/4b0d93aa2a3e16bde17469cb9de9ce5a20da2507))
+* Remove references to yarn ([a42c289](https://github.com/equinor/create-dm-app/commit/a42c289cbc355e3142246b1fa3a4d6f6e3cc0eec))
+* remove unused ([560336b](https://github.com/equinor/create-dm-app/commit/560336b6fe3e4b1df8b3c8176cf8383bb2033525))
+* renaming and bug fixes ([1613fe3](https://github.com/equinor/create-dm-app/commit/1613fe37246ef919217b75d64c0e042f2c2157e8))
+* Revert to old namechange ([7795011](https://github.com/equinor/create-dm-app/commit/779501188b254cc4dc5a8f2748d6f085793f56db))
+* trying to reduce the scope of this app ([10f3d98](https://github.com/equinor/create-dm-app/commit/10f3d9827d5d1bea46e231f0ca530b3f1af5d7d0))
+* uipluginprovider -&gt; entityview ([787e2e8](https://github.com/equinor/create-dm-app/commit/787e2e826a6af4b3f3ea8cadbd19ae489fdc890a))
+* update to latest componetns ([5a40284](https://github.com/equinor/create-dm-app/commit/5a40284ec96d282f57c2b4e484992c0db09ef794))
+* use RecipeSelector and FSTreeProvider in wrapper ([d9bf6e9](https://github.com/equinor/create-dm-app/commit/d9bf6e9c344f5adf1b6a30d031cdee9b44d8a8dc))
+
+
+### Styles
+
+* run pretty-format-json ([70ee345](https://github.com/equinor/create-dm-app/commit/70ee3454c46a4b0da0bd39a7fcb03e0dd4bab077))
+
+
+### Miscellaneous Chores
+
+* clone correct version ([b91fff1](https://github.com/equinor/create-dm-app/commit/b91fff1f82f1d9ef66488ee52697bc352e520966)), closes [#70](https://github.com/equinor/create-dm-app/issues/70)
+* **pre-commit:** add and update hooks ([3d0cb7f](https://github.com/equinor/create-dm-app/commit/3d0cb7f2862f9916064672b9a9d9f22a3c2ca3ee))
+* remove unused files from npm ([d8b1574](https://github.com/equinor/create-dm-app/commit/d8b15746c77898d4cbec2d786f36f006440eeeaa)), closes [#70](https://github.com/equinor/create-dm-app/issues/70)
+* update codeowners ([ee6e0e9](https://github.com/equinor/create-dm-app/commit/ee6e0e9583ef4e462892723b6a464fd603ec7fe8))
+* upgrade to recent version ([268ab19](https://github.com/equinor/create-dm-app/commit/268ab194a0eb773bb2fbe34be64cb1d678259af7))
+
+
+### Code Refactoring
+
+* removed redundant files ([ead13d8](https://github.com/equinor/create-dm-app/commit/ead13d85e1b377e564dd3ef42fc0e1aa2e60550a))
+
+
+### Build System
+
+* change from jest to vite test ([17e7f10](https://github.com/equinor/create-dm-app/commit/17e7f10b095b841e86970622ca255492ada78d04))
+* replace create react app with vite ([e364780](https://github.com/equinor/create-dm-app/commit/e364780cb0cfe4f5654b2dd84f60ed33eb7c52db))
+
+
+### Continuous Integration
+
+* avoid running no-commit-to-branch on PR merge ([f5111b1](https://github.com/equinor/create-dm-app/commit/f5111b150e9d9ff4c89159111b47dcaa6e1f5559))
+* lock images to fixed version instead of latest ([052da97](https://github.com/equinor/create-dm-app/commit/052da97662136b1e7146ee9f22afe727ac9fe31d))
+
 ## [0.1.1](https://github.com/equinor/create-dm-app/compare/v0.1.0...v0.1.1) (2023-02-03)
 
 
