@@ -24,8 +24,8 @@ if [ -z "$1" ]
 fi
 
 eval $compose run --rm dmss reset-app
-eval $compose run --rm job-api dm -u http://dmss:5000 reset ../app
-dm --url http://localhost:5051 import-plugin-blueprints node_modules/@development-framework/dm-core-plugins
-dm --url http://localhost:5051 reset app --$VALIDATION_FLAG
+eval $compose run --rm job-api dm -u https://dmss-dynamic-job-dev.playground.radix.equinor.com:5000 reset ../app
+dm --url https://dmss-dynamic-job-dev.playground.radix.equinor.com:5000 import-plugin-blueprints node_modules/@development-framework/dm-core-plugins
+dm --url https://dmss-dynamic-job-dev.playground.radix.equinor.com:5000 reset app --$VALIDATION_FLAG
 echo "Creating lookup table"
-dm --url http://localhost:5051 create-lookup DemoApp DemoApplicationDataSource/DemoApplication/recipes
+dm --url https://dmss-dynamic-job-dev.playground.radix.equinor.com:5000 create-lookup DemoApp DemoApplicationDataSource/DemoApplication/recipes
