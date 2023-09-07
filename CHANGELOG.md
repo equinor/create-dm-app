@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.3](https://github.com/equinor/create-dm-app/compare/v0.1.2...v0.1.3) (2023-09-07)
+
+
+### Features
+
+* add oauth auth support ([1e9bb4c](https://github.com/equinor/create-dm-app/commit/1e9bb4c9a8279c06125e89bc331c4df59aa3aa2a))
+
+
+### Code Refactoring
+
+* make it easier to change dmss url ([9754584](https://github.com/equinor/create-dm-app/commit/97545849c0c257d4e80b8557fe46e685c43f0e76))
+
 ## [0.1.2](https://github.com/equinor/create-dm-app/compare/v0.1.1...v0.1.2) (2023-09-04)
 
 
