@@ -47,7 +47,7 @@ const container = document.getElementById('root')
 
 const Content = () => {
   return (
-    <DMSSProvider>
+    <DMSSProvider dmssBasePath={import.meta.env.VITE_DMSS_URL}>
       <ApplicationContext.Provider value={APP_SETTINGS}>
         <UiPluginProvider pluginsToLoad={plugins}>
           <App />
