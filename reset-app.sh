@@ -25,7 +25,7 @@ fi
 
 eval $compose run --rm dmss reset-app
 eval $compose run --rm job-api dm -u http://dmss:5000 reset ../app
-dm --url http://localhost:5051 import-plugin-blueprints node_modules/@development-framework/dm-core-plugins
-dm --url http://localhost:5051 reset app --$VALIDATION_FLAG
+dm --url http://localhost:5002 import-plugin-blueprints node_modules/@development-framework/dm-core-plugins
+dm --url http://localhost:5002 reset app --$VALIDATION_FLAG
 echo "Creating lookup table"
-dm --url http://localhost:5051 create-lookup DemoApp DemoApplicationDataSource/DemoApplication/recipes
+dm --url http://localhost:5002 create-lookup DemoApp DemoApplicationDataSource/DemoApplication/recipes
