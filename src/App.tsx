@@ -27,9 +27,7 @@ function App() {
   }
 
   return (
-    <FSTreeProvider
-      visibleDataSources={import.meta.env.VITE_VISIBLE_DATA_SOURCES.split(',')}
-    >
+    <FSTreeProvider visibleDataSources={application?.dataSources}>
       <EntityView
         idReference={`${import.meta.env.VITE_DATA_SOURCE}/$${application?._id}`}
         type={application?.type}
