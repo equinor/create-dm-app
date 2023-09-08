@@ -4,6 +4,8 @@
   "type": "../blueprints/DemoApplication",
   "label": "Demo App",
   "dataSources": [
-    "DemoApplicationDataSource"
+    "DemoApplicationDataSource",
+    "system",
+    "WorkflowDS"
   ]
 }
