@@ -35,6 +35,10 @@ jobs:
         working-directory: ${{ env.APP_NAME }}
         run: eval "$DC_ENV docker-compose run --rm dmss reset-app"
 
+      - name: 'Add plugin blueprints to DMSS'
+        working-directory: ${{ env.APP_NAME }}
+        run: dm -u http://localhost:5002 import-plugin-blueprints ./node_modules/@development-framework/dm-core-plugins
+
       - name: 'Add local blueprints to DMSS'
         working-directory: ${{ env.APP_NAME }}
         run: dm -u http://localhost:5002 reset app/
