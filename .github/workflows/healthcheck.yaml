@@ -82,4 +82,4 @@ jobs:
         if: ${{ steps.curl.outputs.frontend-status-code != 200 || steps.curl.outputs.backend-status-code != 200 }}
         uses: actions/github-script@v6
         with:
-          script: core.setFailed('Frontend or backend is not responding!')
+          script: core.setFailed('Backend returned status code ${{ steps.curl.outputs.backend-status-code }}. Frontend returned status code ${{ steps.curl.outputs.frontend-status-code }}')
