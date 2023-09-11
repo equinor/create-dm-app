@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.4](https://github.com/equinor/create-dm-app/compare/v0.1.3...v0.1.4) (2023-09-11)
+
+
+### Bug Fixes
+
+* correct dmss urls ([bda9b2f](https://github.com/equinor/create-dm-app/commit/bda9b2f77ba7a96cd14d2822df0bec0aa3d2549a))
+
+
+### Code Refactoring
+
+* get data sources to show from application instead of env ([0c9a6fa](https://github.com/equinor/create-dm-app/commit/0c9a6fa8fa8663885f03e22c77b7783a7932a89b))
+
 ## [0.1.3](https://github.com/equinor/create-dm-app/compare/v0.1.2...v0.1.3) (2023-09-07)
 
 
