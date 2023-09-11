@@ -62,7 +62,7 @@ jobs:
         working-directory: ${{ env.APP_NAME }}
         run: |
           npm run build
-          pm2 start "serve -s build"
+          pm2 start npm -- run serve
 
       - name: 'Curl frontend and backend'
         id: curl
