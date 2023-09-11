@@ -49,7 +49,7 @@ jobs:
 
       - name: 'Create lookup table in DMSS'
         working-directory: ${{ env.APP_NAME }}
-        run: dm -u http://localhost:5002 create-lookup DemoApp DemoApplicationDataSource/instances/recipe_links
+        run: dm -u http://localhost:5002 create-lookup DemoApp DemoApplicationDataSource/DemoApplication/recipes
 
       - name: 'Install latest plugins'
         if: inputs.asLatest
