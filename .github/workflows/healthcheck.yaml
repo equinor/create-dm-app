@@ -37,7 +37,7 @@ jobs:
 
       - name: 'Add local blueprints to DMSS'
         working-directory: ${{ env.APP_NAME }}
-        run: dm reset app/
+        run: dm -u http://localhost:5002 reset app/
 
       - name: 'Add job blueprints to DMSS'
         working-directory: ${{ env.APP_NAME }}
@@ -45,7 +45,7 @@ jobs:
 
       - name: 'Create lookup table in DMSS'
         working-directory: ${{ env.APP_NAME }}
-        run: dm create-lookup DemoApp DemoApplicationDataSource/instances/recipe_links
+        run: dm -u http://localhost:5002 create-lookup DemoApp DemoApplicationDataSource/instances/recipe_links
 
       - name: 'Install latest plugins'
         if: inputs.asLatest
@@ -65,7 +65,7 @@ jobs:
         run: |
           sleep 5
           echo "frontend-status-code=$(curl -s -o /dev/null -w "%{http_code}" localhost:3000)" >> $GITHUB_OUTPUT
-          echo "backend-status-code=$(curl -s -o /dev/null -w "%{http_code}" localhost:5000/api/healthcheck)" >> $GITHUB_OUTPUT
+          echo "backend-status-code=$(curl -s -o /dev/null -w "%{http_code}" localhost:5002/api/healthcheck)" >> $GITHUB_OUTPUT
 
       - name: 'Stop DMSS'
         working-directory: ${{ env.APP_NAME }}

@@ -132,7 +132,7 @@ Associate a blueprint type with a set of uiRecipes that uses the ui-plugin
 
 1. Create a `CORE:RecipeLink`-entity (see `app/data/DemoApplicationDataSource/instances/recipe_links/demoApp.json` as an
    example)
-2. Create a _lookup_ with the app name and the _RecipeLinks_ for it (DMSS must be running on localhost:5000)
+2. Create a _lookup_ with the app name and the _RecipeLinks_ for it (DMSS must be running on localhost:5002)
    - `dm create-lookup DemoApp DemoApplicationDataSource/instances/recipe_links`
 
 ### Using the Tree component
