@@ -5,6 +5,10 @@ on:
         description: 'Run with latest images and packages'
         required: true
         type: boolean
+      useLocal:
+        description: 'If true, checkout main from repo. If false, get from npm'
+        required: true
+        type: boolean
 
 env:
   APP_NAME: 'my-app'
@@ -17,56 +21,75 @@ jobs:
       - name: 'Install dm-cli'
         run: pip install dm-cli
 
-      - name: 'Install pm2 and serve'
-        run: |
-          npm add -g pm2
-          npm add -g serve
+      - name: 'Install pm2'
+        run: npm add -g pm2
 
-      - name: 'Create a new application'
+      - name: 'Install serve'
+        run: npm add -g serve
+
+      - name: 'Create a new application from main'
+        if: inputs.useLocal
+        uses: actions/checkout@v4
+        with:
+          path: ${{ env.APP_NAME }}
+
+      - name: 'Create a new application from npmjs'
+        if: ${{ !inputs.useLocal }}
         run: npx @development-framework/create-dm-app $APP_NAME
 
+      - name: 'Install dependencies'
+        working-directory: ${{ env.APP_NAME }}
+        run: npm install
+
       - name: 'Start DMSS'
+        working-directory: ${{ env.APP_NAME }}
         run: |
-          cd $APP_NAME
           eval "$DC_ENV docker-compose pull"
           eval "$DC_ENV docker-compose up --build --detach"
 
-      - name: 'Populate DMSS'
-        run: |
-          cd $APP_NAME
-          eval "$DC_ENV docker-compose run --rm dmss reset-app"
-          dm reset app/
-          eval "$DC_ENV docker-compose run --rm job-api dm -u http://dmss:5000 reset ../app"
+      - name: 'Reset app to only include SIMOS blueprints'
+        working-directory: ${{ env.APP_NAME }}
+        run: eval "$DC_ENV docker-compose run --rm dmss reset-app"
+
+      - name: 'Add plugin blueprints to DMSS'
+        working-directory: ${{ env.APP_NAME }}
+        run: dm -u http://localhost:5002 import-plugin-blueprints ./node_modules/@development-framework/dm-core-plugins
+
+      - name: 'Add local blueprints to DMSS'
+        working-directory: ${{ env.APP_NAME }}
+        run: dm -u http://localhost:5002 reset app/
+
+      - name: 'Add job blueprints to DMSS'
+        working-directory: ${{ env.APP_NAME }}
+        run: eval "$DC_ENV docker-compose run --rm job-api dm -u http://dmss:5000 reset ../app"
 
       - name: 'Create lookup table in DMSS'
-        run: |
-          cd $APP_NAME
-          dm create-lookup DemoApp DemoApplicationDataSource/instances/recipe_links
+        working-directory: ${{ env.APP_NAME }}
+        run: dm -u http://localhost:5002 create-lookup DemoApp DemoApplicationDataSource/DemoApplication/recipes
 
       - name: 'Install latest plugins'
         if: inputs.asLatest
+        working-directory: ${{ env.APP_NAME }}
         run: |
-          cd $APP_NAME
           npm add @development-framework/dm-core
           npm add @development-framework/yaml-view
 
       - name: 'Start the web application'
+        working-directory: ${{ env.APP_NAME }}
         run: |
-          cd $APP_NAME
           npm run build
-          pm2 start "serve -s build"
+          pm2 start npm -- run serve
 
       - name: 'Curl frontend and backend'
         id: curl
         run: |
           sleep 5
           echo "frontend-status-code=$(curl -s -o /dev/null -w "%{http_code}" localhost:3000)" >> $GITHUB_OUTPUT
-          echo "backend-status-code=$(curl -s -o /dev/null -w "%{http_code}" localhost:5000/api/healthcheck)" >> $GITHUB_OUTPUT
+          echo "backend-status-code=$(curl -s -o /dev/null -w "%{http_code}" localhost:5002/api/healthcheck)" >> $GITHUB_OUTPUT
 
       - name: 'Stop DMSS'
-        run: |
-          cd $APP_NAME
-          docker-compose stop
+        working-directory: ${{ env.APP_NAME }}
+        run: docker-compose stop
 
       - name: 'Stop the web application'
         run: pm2 stop 0
@@ -75,4 +98,4 @@ jobs:
         if: ${{ steps.curl.outputs.frontend-status-code != 200 || steps.curl.outputs.backend-status-code != 200 }}
         uses: actions/github-script@v6
         with:
-          script: core.setFailed('Frontend or backend is not responding!')
+          script: core.setFailed('Backend returned status code ${{ steps.curl.outputs.backend-status-code }}. Frontend returned status code ${{ steps.curl.outputs.frontend-status-code }}')

@@ -9,7 +9,9 @@ jobs:
     uses: ./.github/workflows/healthcheck.yaml
     with:
       asLatest: false
+      useLocal: false
   latest:
     uses: ./.github/workflows/healthcheck.yaml
     with:
       asLatest: true
+      useLocal: false
