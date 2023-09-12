@@ -5,6 +5,18 @@ on:
   workflow_call:
 
 jobs:
+  healthcheck-standard:
+    uses: ./.github/workflows/healthcheck.yaml
+    with:
+      asLatest: false
+      useLocal: true
+
+  healthcheck-latest:
+    uses: ./.github/workflows/healthcheck.yaml
+    with:
+      asLatest: true
+      useLocal: true
+
   test-web:
     runs-on: ubuntu-latest
     steps:

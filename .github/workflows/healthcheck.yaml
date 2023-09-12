@@ -5,6 +5,10 @@ on:
         description: 'Run with latest images and packages'
         required: true
         type: boolean
+      useLocal:
+        description: 'If true, checkout main from repo. If false, get from npm'
+        required: true
+        type: boolean
 
 env:
   APP_NAME: 'my-app'
@@ -17,13 +21,25 @@ jobs:
       - name: 'Install dm-cli'
         run: pip install dm-cli
 
-      - name: 'Install pm2 and serve'
-        run: |
-          npm add -g pm2
-          npm add -g serve
+      - name: 'Install pm2'
+        run: npm add -g pm2
 
-      - name: 'Create a new application'
+      - name: 'Install serve'
+        run: npm add -g serve
+
+      - name: 'Create a new application from main'
+        if: inputs.useLocal
+        uses: actions/checkout@v4
+        with:
+          path: ${{ env.APP_NAME }}
+
+      - name: 'Create a new application from npmjs'
+        if: ${{ !inputs.useLocal }}
         run: npx @development-framework/create-dm-app $APP_NAME
+
+      - name: 'Install dependencies'
+        working-directory: ${{ env.APP_NAME }}
+        run: npm install
 
       - name: 'Start DMSS'
         working-directory: ${{ env.APP_NAME }}
