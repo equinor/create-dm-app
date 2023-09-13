@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.5](https://github.com/equinor/create-dm-app/compare/v0.1.4...v0.1.5) (2023-09-13)
+
+
+### Documentation
+
+* update readme ([46f0118](https://github.com/equinor/create-dm-app/commit/46f0118fe8e2063d1de106aae509828aa8cebd93))
+
+
+### Continuous Integration
+
+* fix failing healthcheck and trigger it on push too ([106abe0](https://github.com/equinor/create-dm-app/commit/106abe059ed0d2a429a7a02ad6376332174e26d5))
+
 ## [0.1.4](https://github.com/equinor/create-dm-app/compare/v0.1.3...v0.1.4) (2023-09-11)
 
 
