@@ -32,11 +32,11 @@ higher, see [instructions for older npm versions](https://gist.github.com/gaearo
 
 The dependent services (DMSS, job and databases) are specified in the docker compose file called `docker-compose.yaml`.
 
-Go to the `my-app` folder in a terminal and run the commands to start the services:
+Go to the `my-app` folder in a terminal and run the commands to start the services (passing the "-d" flag  is optional for running detached):
 
 ```
 docker-compose pull
-docker-compose up --build
+docker-compose up --build -d
 ```
 
 ### 3) Install dm-cli
@@ -45,13 +45,13 @@ The [dm-cli](https://github.com/equinor/dm-cli) can be used for resetting datas 
 
 1. Create a new virtual python environment with the bash command
    ```bash
-   python -m venv .venv
+   python3 -m venv .venv
    ```
 2. Activate the virtual environment with the bash command
    ```bash
    source .venv/bin/activate
    ```
-3. Install the dm-cli (available on [PyPi](https://pypi.org/project/dm-cli/) with
+3. Install the dm-cli (available on [PyPi](https://pypi.org/project/dm-cli/)) with
    ```bash
    pip install dm-cli
    ```
