@@ -129,9 +129,3 @@ Once installed, pre-commit can be run with:
 ```bash
 pre-commit run --all-files
 ```
-
-### Link dm-core-packages
-
-If you want to work on the core and don't want to release new core versions to see the changes in create-dm-app, then
-change the `@development-framework/dm-core` from inside `package.json` to point to core locally
-like `link:./../dm-core-packages/packages/dm-core/`. You have to run `yarn rollup` inside dm-core to get changes, since this will build a new dist that will be picked-up by create-dm-app.
