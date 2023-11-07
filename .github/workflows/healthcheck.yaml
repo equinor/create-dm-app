@@ -46,33 +46,18 @@ jobs:
         run: |
           eval "$DC_ENV docker-compose pull"
           eval "$DC_ENV docker-compose up --build --detach"
+          eval "$DC_ENV docker-compose logs"
 
-      - name: 'Reset app to only include SIMOS blueprints'
+      - name: 'Run reset app'
         working-directory: ${{ env.APP_NAME }}
-        run: eval "$DC_ENV docker-compose run --rm dmss reset-app"
-
-      - name: 'Add plugin blueprints to DMSS'
-        working-directory: ${{ env.APP_NAME }}
-        run: dm -u http://localhost:5002 import-plugin-blueprints ./node_modules/@development-framework/dm-core-plugins
-
-      - name: 'Add local blueprints to DMSS'
-        working-directory: ${{ env.APP_NAME }}
-        run: dm -u http://localhost:5002 reset app/
-
-      - name: 'Add job blueprints to DMSS'
-        working-directory: ${{ env.APP_NAME }}
-        run: eval "$DC_ENV docker-compose run --rm job-api dm -u http://dmss:5000 reset ../app"
-
-      - name: 'Create lookup table in DMSS'
-        working-directory: ${{ env.APP_NAME }}
-        run: dm -u http://localhost:5002 create-lookup DemoApp DemoApplicationDataSource/DemoApplication/recipes
+        run: ./reset-app.sh
 
       - name: 'Install latest plugins'
         if: inputs.asLatest
         working-directory: ${{ env.APP_NAME }}
         run: |
           npm add @development-framework/dm-core
-          npm add @development-framework/yaml-view
+          npm add @development-framework/dm-core-plugins
 
       - name: 'Start the web application'
         working-directory: ${{ env.APP_NAME }}

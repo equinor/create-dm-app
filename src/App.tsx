@@ -9,7 +9,11 @@ import React from 'react'
 import { Progress } from '@equinor/eds-core-react'
 
 function App() {
-  const [application, isLoading, , error] = useDocument<TGenericObject>(
+  const {
+    document: application,
+    isLoading,
+    error,
+  } = useDocument<TGenericObject>(
     `${import.meta.env.VITE_DATA_SOURCE}/$${
       import.meta.env.VITE_APPLICATION_ID
     }`
