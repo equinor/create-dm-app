@@ -44,6 +44,6 @@ runCommand(`rm -rf ${repoName}/.github`)
 runCommand(`rm -rf ${repoName}/CHANGELOG.md`)
 
 console.log(
-  'Congratulations! You are ready. Follow the following commands to start'
+  'Congratulations! You are ready. The following commands will start the application.'
 )
 console.log(`cd ${repoName} && npm start`)

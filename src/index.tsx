@@ -3,6 +3,7 @@ import {
   ApplicationContext,
   DMSSProvider,
   UiPluginProvider,
+  DMJobProvider,
 } from '@development-framework/dm-core'
 import App from './App'
 import { createRoot } from 'react-dom/client'
@@ -48,12 +49,14 @@ const container = document.getElementById('root')
 const Content = () => {
   return (
     <DMSSProvider dmssBasePath={import.meta.env.VITE_DMSS_URL}>
-      <ApplicationContext.Provider value={APP_SETTINGS}>
-        <UiPluginProvider pluginsToLoad={plugins}>
-          <App />
-          <ToastContainer />
-        </UiPluginProvider>
-      </ApplicationContext.Provider>
+      <DMJobProvider dmJobPath={import.meta.env.VITE_DM_JOB_URL}>
+        <ApplicationContext.Provider value={APP_SETTINGS}>
+          <UiPluginProvider pluginsToLoad={plugins}>
+            <App />
+            <ToastContainer />
+          </UiPluginProvider>
+        </ApplicationContext.Provider>
+      </DMJobProvider>
     </DMSSProvider>
   )
 }
