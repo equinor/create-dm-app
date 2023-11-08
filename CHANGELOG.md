@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.6](https://github.com/equinor/create-dm-app/compare/v0.1.5...v0.1.6) (2023-11-08)
+
+
+### Documentation
+
+* minor updates to readme ([2569c1b](https://github.com/equinor/create-dm-app/commit/2569c1b2dab7baf31a72cc77eb00078dcd59fa16))
+
+
+### Miscellaneous Chores
+
+* update to use newest dependencies ([1533ce3](https://github.com/equinor/create-dm-app/commit/1533ce3ed3e732c091c3524aa9f322fa864f2783))
+
 ## [0.1.5](https://github.com/equinor/create-dm-app/compare/v0.1.4...v0.1.5) (2023-09-13)
 
 
