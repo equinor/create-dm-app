@@ -17,3 +17,7 @@ See [application development](https://equinor.github.io/dm-docs/docs/guides/appl
 [on-push-main-workflow]: https://github.com/equinor/dm-core-packages/actions/workflows/on-push.yaml
 [healthcheck-badge]: https://github.com/equinor/create-dm-app/actions/workflows/on-schedule-nightly.yaml/badge.svg
 [healthcheck-workflow]: https://github.com/equinor/create-dm-app/actions/workflows/on-schedule-nightly.yaml
+
+<a id="Contributing"></a>
+## :+1: Contributing
+If you would like to contribute, please read our [Contribution guide](https://equinor.github.io/dm-docs/contributing/).
