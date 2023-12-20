@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.7](https://github.com/equinor/create-dm-app/compare/v0.1.6...v0.1.7) (2023-12-20)
+
+
+### Miscellaneous Chores
+
+* bump dm cli version ([25613b2](https://github.com/equinor/create-dm-app/commit/25613b29208e8670ae0a10cf82b3e070efd00b3d))
+* bump dmss and job api versions ([3f77c7f](https://github.com/equinor/create-dm-app/commit/3f77c7f3d521d7d2f2e5e22dc5152656c009800d))
+
 ## [0.1.6](https://github.com/equinor/create-dm-app/compare/v0.1.5...v0.1.6) (2023-11-08)
 
 
