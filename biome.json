@@ -1,0 +1,78 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.4.0/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "files": {
+    "ignore": [
+      "*.config.js",
+      "*.config.base.js",
+      "*.test.tsx",
+      "dist",
+      "node_modules",
+      "build"
+    ]
+  },
+  "javascript": {
+    "formatter": {
+      "semicolons": "asNeeded",
+      "indentStyle": "space",
+      "indentWidth": 2,
+      "jsxQuoteStyle": "single",
+      "quoteStyle": "single",
+      "trailingComma": "es5"
+    }
+  },
+  "json": {
+    "formatter": {
+      "indentStyle": "space",
+      "indentWidth": 2
+    }
+  },
+  "linter": {
+    "ignore": [
+      "build",
+      "coverage",
+      "node_modules",
+      "dist",
+      ".release-please-manifest.json"
+    ],
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "suspicious": {
+        "noExplicitAny": "off",
+        "noArrayIndexKey": "off",
+        "noAssignInExpressions": "off",
+        "useIsArray": "off",
+        "useValidTypeof": "off"
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "off"
+      },
+      "complexity": {
+        "noForEach": "off",
+        "useLiteralKeys": "off",
+        "useOptionalChain": "off"
+      },
+      "style": {
+        "noInferrableTypes": "off",
+        "noUnusedTemplateLiteral": "off",
+        "useTemplate": "off",
+        "noParameterAssign": "off",
+        "noUselessElse": "off",
+        "useSelfClosingElements": "off",
+        "useExponentiationOperator": "off"
+      },
+      "security": {
+        "noDangerouslySetInnerHtml": "off"
+      },
+      "performance": {
+        "noDelete": "off"
+      },
+      "a11y": {
+        "useKeyWithClickEvents": "off"
+      }
+    }
+  }
+}
