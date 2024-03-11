@@ -1,18 +1,16 @@
 {
-  "name": "DemoApplicationDataSource",
+  "name": "DemoDS",
   "repositories": {
     "forecastDB": {
       "type": "mongo-db",
       "host": "db",
       "port": 27017,
       "username": "maf",
-      "password": "maf",
+      "password": "$MONGO_PASSWORD",
       "tls": false,
       "database": "DemoApp",
       "collection": "default",
-      "data_types": [
-        "blob"
-      ]
+      "data_types": ["blob"]
     }
   }
 }
