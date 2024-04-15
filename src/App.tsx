@@ -1,3 +1,5 @@
+import '@development-framework/dm-core-plugins/dist/build.css'
+import '@development-framework/dm-core/dist/main.css'
 import {
   AuthContext,
   DMApplicationProvider,
