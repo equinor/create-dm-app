@@ -2,11 +2,12 @@ version: "3.4"
 
 services:
   dmss:
-    image: datamodelingtool.azurecr.io/dmss:${DMSS_TAG:-v1.23.1}
+    image: datamodelingtool.azurecr.io/dmss:${DMSS_TAG:-v1.26.0}
     restart: unless-stopped
     environment:
       AUTH_ENABLED: 0
       ENVIRONMENT: local
+      REDIS_PASSWORD: maf
       LOGGING_LEVEL: INFO
       MONGO_USERNAME: maf
       MONGO_PASSWORD: maf
@@ -16,6 +17,12 @@ services:
       - "5002:5000"
     depends_on:
       - db
+      - redis
+  redis:
+    image: bitnami/redis:latest
+    environment:
+        REDIS_PASSWORD: maf
+
 
   db:
     image: mongo:3.6
@@ -27,19 +34,17 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: maf
 
   job-api:
-    image: datamodelingtool.azurecr.io/dm-job:${JOB_API_TAG:-v1.6.3}
+    image: datamodelingtool.azurecr.io/dm-job:${JOB_API_TAG:-v1.6.4}
     restart: unless-stopped
     environment:
+      SCHEDULER_REDIS_HOST: redis
+      SCHEDULER_REDIS_PASSWORD: maf
       DMSS_API: http://dmss:5000
-      MONGO_PASSWORD: maf
       ENVIRONMENT: local
+      AUTH_ENABLED: 0
     depends_on:
-      - job-store
+      - redis
     volumes:
       - ./job_handlers:/code/src/job_handler_plugins
     ports:
       - "5001:5000"
-
-  job-store:
-    image: redis:6.2.5-alpine
-    command: "redis-server --save 30 1 --loglevel notice"

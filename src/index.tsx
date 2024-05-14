@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import ReactDOM from 'react-dom/client'
-import { createRoot } from 'react-dom/client'
 import { AuthContext, AuthProvider, IAuthContext } from 'react-oauth2-code-pkce'
 import App from './App'
 

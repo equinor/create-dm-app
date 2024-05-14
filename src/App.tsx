@@ -6,7 +6,7 @@ import {
   ErrorResponse,
   TApplication,
 } from '@development-framework/dm-core'
-import '@development-framework/dm-core-plugins/dist/build.css'
+import '@development-framework/dm-core-plugins/dist/main.css'
 import '@development-framework/dm-core/dist/main.css'
 import { Button, Card, Icon, Typography } from '@equinor/eds-core-react'
 import { refresh } from '@equinor/eds-icons'
