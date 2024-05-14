@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.1.8](https://github.com/equinor/create-dm-app/compare/v0.1.7...v0.1.8) (2024-05-14)
+
+
+### Bug Fixes
+
+* reorder app header plugins ([54ac05b](https://github.com/equinor/create-dm-app/commit/54ac05b6aa7502d9f1b4de8938757f8e64a96d84))
+
+
+### Styles
+
+* import css from dm-core ([18e7534](https://github.com/equinor/create-dm-app/commit/18e75348597afccbdc4d74034631f022e645cec0))
+* run pre-commit ([3493a45](https://github.com/equinor/create-dm-app/commit/3493a45aebcdcad463b1be4c0d30e3d2f8d909ce))
+
+
+### Miscellaneous Chores
+
+* update dependencies ([c43862b](https://github.com/equinor/create-dm-app/commit/c43862b7c2ff645a1b704a0bf611fc68311906b8))
+
 ## [0.1.7](https://github.com/equinor/create-dm-app/compare/v0.1.6...v0.1.7) (2024-04-15)
 
 
