@@ -1,6 +1,8 @@
 
 # create-dm-app
 
+> By november 2026, since this repository is not used anymore, it was archived. 
+
 [![license-badge]][license]
 [![on-push-main-badge]][on-push-main-workflow]
 [![healthcheck-badge]][healthcheck-workflow]
